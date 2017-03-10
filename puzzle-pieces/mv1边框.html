@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mv1边框</title>
+  <!--
+			1、先分析设计图的结构
+			2、根据所分析的结构，进行结构编码
+			3、根据所书写的结构，进行css编码
+			4、利用ps工具，对设计图上的模块进行测量以及颜色的拾取
+			5、样式添加
+	-->
+  <style>
+    body {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+
+    #container {
+      width: 500px;
+      height: 620px;
+      border: 2px solid #e15671;
+      border-top: none;
+    }
+
+    #box1 {
+      height: 123px;
+      border-top: 2px solid #f19552;
+    }
+
+    #box2 {
+      height: 120px;
+      border-top: 1px solid #964450;
+    }
+    
+    #box3{
+      height: 193px;
+      border-top: 1px solid #964450;
+    }
+    
+    #box4{
+      height: 179px;
+      border-top: 1px solid #964450;
+    }
+  </style>
+</head> 
+
+<body>
+  <div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+  </div>
+</body>
+
+</html>
