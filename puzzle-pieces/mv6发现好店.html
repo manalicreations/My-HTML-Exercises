@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>发现好店</title>
+  <!--
+			1、考虑标签语义化，使用合适的标签
+			2、标签特性的转换
+			3、小竖线使用哪种方式进行编码（图片、边框、背景颜色、字符...）
+			4、文字的行高设置
+			5、标签默认样式的处理(reset css)
+		-->
+  <style>
+  body {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .container {
+    width: 260px;
+    background: #f7f7f7;
+    padding: 4px 14px 27px 14px;
+    font: 12px "宋体";
+    color: #6c6c6c;
+  }
+  
+  .header {
+    background: url(../img/mv/6/6h.jpg) no-repeat;
+    padding: 0 0 3px 99px;
+    font: 11px/17px "微软雅黑";
+    font-weight: bold;
+    margin-bottom: 14px;
+  }
+  
+  .info {
+    border: 1px solid #e8e8e8;
+    border-bottom: none;
+    background: #ffffff;
+    padding: 8px 14px 16px 14px;
+  }
+  
+  .name {
+    line-height: 30px;
+    text-decoration: none;
+    color: #525252;
+    font-family: "微软雅黑";
+    font-weight: bold;
+  }
+  
+  .borderL {
+    border-left: 1px solid #eaeaea;
+    display: inline-block;
+    text-indent: 10px;
+  }
+  
+  .feedback {
+    margin-bottom: 12px;
+  }
+  
+  img {
+    border: none;
+    vertical-align: top;
+  }
+  
+  .middlePic {
+		margin: 0 3.5px 0 3.5px;
+  }
+  
+  .footer {
+    background: url(../img/mv/6/6fr.png) no-repeat 88px 12px #e9e9e9;
+    line-height: 34px;
+    text-indent: 113px;
+    padding-top: 4px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul >
+      <li class="header">
+      	你可能喜欢的店铺
+      </li>
+      <li class="info">
+        <ul class="store">
+          <a class="name" href="1#">素色空间</a>
+          <li class="feedback">
+            <span>是正品</span>
+            <span class="borderL">漂亮</span>
+            <span class="borderL">很漂亮</span>
+            <span class="borderL">双鱼座</span>
+          </li>
+          <li class="pics">
+            <a><img src="../img/mv/6/611.jpg" alt="earring">
+            </a>
+            <a>
+              <img class="middlePic" src="../img/mv/6/612.jpg" alt="ring">
+            </a>
+            <a>
+              <img src="../img/mv/6/613.jpg" alt="another earring">
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="info">
+        <ul class="store">
+          <a class="name" href="2#">哆哆妙HOUSE</a>
+          <li class="feedback">
+            <span>正品</span>
+            <span class="borderL">很舒服</span>
+            <span class="borderL">萌系</span>
+            <span class="borderL">韩版</span>
+          </li>
+          <li class="pics">
+            <a>
+              <img src="../img/mv/6/621.jpg" alt="blue socks">
+            </a>
+            <a>
+              <img class="middlePic" src="../img/mv/6/622.jpg" alt="jeans">
+            </a>
+            <a>
+              <img src="../img/mv/6/623.jpg" alt="another socks">
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="info">
+        <ul class="store">
+          <a class="name" href="3#">遇见艺术家外贸生活馆</a>
+          <li class="feedback">
+            <span>态度很好</span>
+            <span class="borderL">无色差</span>
+            <span class="borderL">有赠品</span>
+            <span class="borderL">送了赠品</span>
+          </li>
+          <li class="pics">
+            <a><img src="../img/mv/6/631.jpg" alt="small dish"></a>
+            <a>
+              <img class="middlePic" src="../img/mv/6/632.jpg" alt="vase">
+            </a>
+            <a>
+              <img src="../img/mv/6/633.jpg" alt="spoon">
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="info">
+        <ul class="store">
+          <a class="name" href="4#">【大城小事】娇兰代购中心</a>
+          <li class="feedback">
+            <span>与描述相符</span>
+            <span class="borderL">包装不错</span>
+            <span class="borderL">是正品</span>
+            <span class="borderL">正品</span>
+          </li>
+          <li class="pics">
+            <a>
+              <img src="../img/mv/6/641.jpg" alt="lipstick">
+            </a>
+            <a>
+              <img class="middlePic" src="../img/mv/6/642.jpg" alt="facial cream">
+            </a>
+            <a>
+              <img src="../img/mv/6/643.jpg" alt="eye cream">
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="footer">
+        <p>换一组看看</p>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

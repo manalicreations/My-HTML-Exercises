@@ -5,16 +5,47 @@
   <meta charset="UTF-8">
   <title>翻页条</title>
   <style>
-    .pageBox {
-      border: 2px solid #c0c0c0;
-      
-    }
+  .pageBox {
+    margin: 100px;
+  }
+  
+  a {
+    display: inline-block;
+    width: 17px;
+    height: 20px;
+    border: 1px solid #c0c0c0;
+    font: 12px/20px "宋体";
+    text-align: center;
+    text-decoration: none; 
+    color: blue;
+  }
+
+  .pageBut {
+    width: 64px;
+  }
+  
+  a:link {
+    color: blue;
+  }
+  
+  a:visited {
+    color: red;
+  }
+  
+  a:hover {
+    background-color: blue;
+    color: white;
+  }
+  
+  a:active {
+    color: black;
+  }
   </style>
 </head>
 
 <body>
   <div class="pageBox">
-    <a href="">上一页</a>
+    <a href="" class="pageBut">上一页</a>
     <a href="">1</a>
     <a href="">2</a>
     <a href="">3</a>
@@ -25,7 +56,7 @@
     <a href="">8</a>
     <a href="">9</a>
     <a href="">...</a>
-    <a href="">下一页</a>
+    <a href="" class="pageBut">下一页</a>
   </div>
 </body>
 

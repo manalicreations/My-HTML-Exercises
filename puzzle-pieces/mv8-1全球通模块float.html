@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>全球通模块</title>
+  <!--
+      1、必须用浮动布局（对浮动的知识点进行一个检验）
+      2、必须清浮动
+      3、结构，标签语义化
+      4、思考：扩展性，以后维护起来更方便。
+
+      清浮动:
+      子浮动,给其父+以下class来给其父清浮动:
+      (此处叫clearfix的类名字随便取但:after伪类不能改)
+      .clearfix {*zoom:1;} 照顾IE狗
+      .clearfix:after {
+        content: "";  这条属性值本意是给当前元素增加文字内容  
+        display: block;
+        clear: both;  也可单纯是left/right
+      }
+    -->
+  <style>
+  body {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  hr {
+    margin: 0;
+  }
+  /*清除a里面img的默认缝隙:*/
+  
+  img {
+    border: none;
+    vertical-align: top;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #3a3a3a;
+    display: inline-block;
+  }
+  
+  .clearfix {
+    *zoom: 1;
+  }
+  
+  .clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  .container {
+    padding: 32px 50px 30px 50px;
+    width: 660px;
+    font: 14px "微软雅黑";
+  }
+  hr{ color: #e8788e; }
+  .title {
+    background: url(../img/mv/8/8-1-全球通业务模块/earth.png) no-repeat 0 12px;
+    padding-left: 33px;
+    color: #ec8296;
+    font-size: 15px;
+    line-height: 47px;
+    margin-bottom: 4px;
+  }
+  
+  .app {
+    height: 134px;
+    /*没有高,内容会溢出*/
+    padding-bottom: 11px;
+  }
+  
+  .pf {
+    float: left;
+    text-align: center;
+    margin-right: 40px;
+  }
+  .app li:last-child {
+    margin-right: 0;
+  }
+  
+  .pf,.pic {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .pic {
+    /*text-align: center; 已继承与.pf*/
+    line-height: 100px;
+    border: 1px solid #e5e5e5;
+  }
+  
+  .pic img {
+    vertical-align: middle;
+  }
+  
+  .clearfix .pf a:last-child {
+    height: 34px;
+    font-size: 14px;
+    line-height: 34px;
+  }
+  
+  .link1 { 
+    border-top: 1px dashed #e5e5e5;
+    padding-top: 29px; 
+    line-height: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .link2 {
+    line-height: 16px;
+    text-align: center;
+
+  }  
+
+  .link1 li,.link2 li {
+    float: left;
+    width: 92px;
+    border-right: 1px solid #bebebe;
+    margin-top: 8px;
+  }
+
+  .link1 li:first-child, .link2 li:first-child {
+    width: 100px;
+    line-height: 30px;
+    border: none;
+    background: #e8788e;
+    margin: 0 5px 0 3px;
+    /*margin-right: 5px;
+    margin-top: 0;*/
+  }
+
+  .link1 li:nth-child(2), .link2 li:nth-child(2) {
+    width: 93px;
+  }
+  .link1 li:nth-child(5), .link2 li:nth-child(5) {
+    width: 117px;
+  }
+  .link1 li:last-child, .link2 li:last-child {
+    width: 62px;
+    border: none;
+    text-align: right;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <hr>
+    <a href="" class="title">
+    全球通业务+
+    </a>
+    <ul class="app clearfix">
+      <li class="pf">
+        <a href="" class="pic">
+          <img src="../img/mv/8/8-1-全球通业务模块/管家.png" alt="管家"></a>
+        <a href="">信息管家</a>
+      </li>
+      <li class="pf">
+        <a href="" class="pic"><img src="../img/mv/8/8-1-全球通业务模块/音乐.png" alt="音乐"></a>
+        <a href="">无线音乐</a>
+      </li>
+      <li class="pf">
+        <a href="" class="pic"><img src="../img/mv/8/8-1-全球通业务模块/手机.png" alt="手机"></a>
+        <a href="">手机证券</a>
+      </li>
+      <li class="pf">
+        <a href="" class="pic"><img src="../img/mv/8/8-1-全球通业务模块/飞机.png" alt="飞信"></a>
+        <a href="">飞信</a>
+      </li>
+      <li class="pf">
+        <a href="" class="pic"><img src="../img/mv/8/8-1-全球通业务模块/短信.png" alt="短信"></a>
+        <a href="">短信回执</a>
+      </li>
+    </ul>
+    <ul class="link1 clearfix">
+      <li><a href="">基本业务</a></li>
+      <li><a href="">国际漫游</a></li>
+      <li><a href="">国际长途</a></li>
+      <li><a href="">国内长途</a></li>
+      <li><a href="">国内漫游</a></li>
+      <li><a href="">本地通话</a></li>
+      <li><a href="">更多>></a></li>
+    </ul>
+    <ul class="link2 clearfix">
+      <li><a href="">新业务</a></li>
+      <li><a href="">手机阅读</a></li>
+      <li><a href="">手机支付</a></li>
+      <li><a href="">139邮箱</a></li>
+      <li><a href="">MO手机上网</a></li>
+      <li><a href="">视频会议</a></li>
+      <li><a href="">更多>></a></li>
+    </ul>
+  </div>
+</body>
+
+</html>
