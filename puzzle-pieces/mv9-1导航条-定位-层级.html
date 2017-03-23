@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>导航条</title>
+  <!--
+			1、定位的使用
+			2、层级的理解和应用  z-index
+			3、导航练习，当hover的时候需要有变化
+			4、相对定位和绝对定位的配合使用
+			5、透明度的配合使用 opacity
+		-->
+  <style>
+  body {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+  }
+  
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+  
+  li {
+    top: 0;
+    position: absolute;
+  }
+  
+  a {
+  	display: block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font: 15px/40px "宋体";
+    text-decoration: none;
+    color: #e15671;
+    background: #fdf1f4;
+    border: 1px solid #e7788d;
+    border-right: none;
+  }
+  
+  a:hover {
+    background: #e7788d;
+    color: #fff;
+  }
+  
+  .two {
+    left: 100px;
+  }
+  
+  .three {
+    left: 200px;
+  }
+  
+  .four {
+    left: 300px;
+  }
+  
+  .five {
+    left: 400px;
+    border-right: 1px solid #e7788d;
+  }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="one"><a href="">小林</a></li>
+    <li class="two"><a href="">托尔</a></li>
+    <li class="three"><a href="">康纳</a></li>
+    <li class="four"><a href="">尔科亚</a></li>
+    <li class="five"><a href="">艾露玛</a></li>
+  </ul>
+</body>
+
+</html>

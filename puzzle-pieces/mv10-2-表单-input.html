@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>表单</title>
+  <!--
+      二、表单练习
+        1、表单与表单控件的配合使用
+        2、单选可以使用图片，也可以直接使用表单的单选控件
+        3、思考：布局结构如何做到一个统一化？
+    -->
+  <style>
+  body {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .main {
+    width: 320px;
+    font: 14px/26px "宋体";
+    border: 1px solid #000fff;
+    padding: 20px;
+    background: #9fd5f2;
+  }
+  
+  .pwhint {
+    display: block;
+    width: 139px;
+    background: #54cdf4;
+    font-size: 12px;
+    margin-top: -4px;
+    margin-left: 70px;
+    border: none;
+    color: red;
+  }
+  /*  改变选择样式思路: 
+    (可自定义icon/背景图片)
+    1.不显示input
+    2.input和其下一个兄弟label 设为定位标点
+    3.input和label:before 
+        设未选中样式content: ""; 定位 
+    4.input:checked 和 label:before 
+        设选中后样式content: ""; 定位 */
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="radio"]+label,
+  input[type="checkbox"]+label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]+label:before {
+    content: "☆";
+    /*最好用icon矢量图/unicode*/
+    position: absolute;
+    right: 18px;
+    bottom: -6px;
+  }
+  
+  input[type="radio"]:checked+label:before {
+    content: "★";
+    /* position: absolute;
+    left: 16px;
+    bottom: -6px;*/
+  }
+  
+  input[type="checkbox"]+label:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: url(../img/mv/10/10-2/checkbox-sprite.png) no-repeat -18px 0;
+    position: absolute;
+    right: 18px;
+    bottom: -1px;
+  }
+  
+  input[type="checkbox"]:checked+label:before {
+    /*cursor: pointer;
+    content: "";*/
+    /*width: 16px;
+    height: 16px;*/
+    background: url(../img/mv/10/10-2/checkbox-sprite.png) no-repeat 0 0;
+    /*position: absolute;*/
+  }
+  .upload input {
+    width: 200px;
+  }
+
+  .msg label {
+    vertical-align: top;
+  }
+  textarea {
+    width: 160px;
+    height: 60px;
+  }
+  .btm {
+    text-align: center;
+  }
+  .btm input:first-child {
+    margin-right: 90px;
+  }
+
+  </style>
+</head>
+<!-- input的placeholder IE678不支持,
+但自带focus默认文字消失,blur默认文字出现效果 -->
+
+<body>
+  <div class="main">
+    <p>
+      <form action="http://search.bilibili.com/all" accept-charset="utf-8">
+        <label>B 站搜索:
+          <input type="text" name="keyword" value="">
+          <input type="submit" name="" value="搜索">
+        </label>
+      </form>
+    </p>
+    <form action="此处为后端接口" method="get/post" accept-charset="utf-8">
+      <p>
+        <label>用 户 名:
+          <input type="text" name="user-name" value="" placeholder="acxniseucfewiryucv">
+        </label>
+      </p>
+      <p>
+        <label for="pw">密&nbsp&nbsp码: </label>
+        <!-- 这种写法效果同上 -->
+        <input type="password" name="password" value="" id="pw">
+        <input class="pwhint" type="text" name="" value="密码要8-12位数字或字母组成" disabled="disabled">
+      </p>
+      <p>
+        性&nbsp&nbsp别:
+        <input type="radio" name="gender" value="male" id="male">&nbsp&nbsp
+        <label for="male">男</label>&nbsp
+        <input type="radio" name="gender" value="female" id="female" checked="checked">&nbsp&nbsp
+        <label for="female">女</label>
+      </p>
+      <p>
+        <label>性 取 向:
+          <select name="sex orientation">
+            <option value="heterosexual">直</option>
+            <option value="homosexual">弯</option>
+            <option value="bisexual">双性恋</option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <label>最爱颜色:
+          <input type="color" name="" value="">
+        </label>
+      </p>
+      <p>
+        <label class="upload">上传头像:
+          <input type="file" name="" value="" multiple="multiple">
+        </label>
+      </p>
+      <p>
+        <label>性&nbsp&nbsp格: 开朗
+          <input type="range" name="" value="" placeholder="">内向
+        </label>
+      </p>
+      <p>
+        爱&nbsp&nbsp好:
+        <input type="checkbox" name="hobit" value="eat" checked="checked" id="eat">&nbsp&nbsp
+        <label for="eat">吃</label>
+        <input type="checkbox" name="hobit" value="sleep" id="sleep">&nbsp&nbsp
+        <label for="sleep">睡</label>
+        <input type="checkbox" name="hobit" value="play" id="play">&nbsp&nbsp
+        <label for="play">玩</label>
+      </p>
+      <p class="msg">
+        <label>留&nbsp&nbsp言:</label>
+        <textarea name=""></textarea>  
+      </p>
+      <p class="btm">
+        <input type="submit" name="" value="提交">
+        <input type="reset" name="" value="重置">
+      </p>
+    </form>
+  </div>
+</body>
+
+</html>

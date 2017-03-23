@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>表格</title>
+  <!--
+			一、表格练习
+				1、表头、表主体的划分
+				2、单元格的合并  
+						①:html里table 加属性 border="几" 
+							css里table{border-collapse:collapse;} 
+
+						②:html里table 加属性 cellspacing="0"
+							css里table{正常写}
+				3、思考：在同一个table标签里如何处理行之间的空隙
+				
+			二、表单练习
+				1、表单与表单控件的配合使用
+				2、单选可以使用图片，也可以直接使用表单的单选控件
+				3、思考：布局结构如何做到一个统一化？
+		-->
+  <style>
+  table {
+    font: 12px/28px "宋体";
+    /*border-collapse: collapse;*/
+    border: 1px solid #99b0da;
+    border-width: 1px 0 0 1px;
+    text-align: center;
+  }
+  
+  th,
+  td {
+    padding: 0;
+    /*重置单元格默认填充*/
+    border: 1px solid #99b0da;
+    border-width: 0 1px 1px 0;
+
+  }
+  img { vertical-align: middle; } 
+  /*因为是要图片垂直居中,
+  所以vertical-align是加给uimg而不是td*/
+  th {
+    background: #dbe3fa;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+  }
+  .red { color: red; }
+  .col1,
+  .col5 {
+    width: 95px;
+  }
+  
+  .col2 {
+    width: 76px;
+  }
+  
+  .col3 {
+    width: 63px;
+    
+  }
+
+  
+  .col4 {
+    width: 115px;
+  }
+  
+  .col6,
+  .col7 {
+    width: 94px;
+  }
+  
+  .fenge {
+    margin-top: 4px;
+  }
+  </style>
+</head>
+
+<body>
+  <table cellspacing="0">
+    <caption>天气预了个报</caption>
+    <thead>
+      <tr>
+        <th colspan="2">日期</th>
+        <th colspan="2">天气现象</th>
+        <th>气温</th>
+        <th>风向</th>
+        <th>风力</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2" class="col1">22日星期五</td>
+        <td class="col2">白天</td>
+        <td class="col3"><img src="../img/mv/10/10-1/sun.jpg" alt=""></td>
+        <td class="col4">晴间多云</td>
+        <td class="red col5">高温 7℃</td>
+        <td class="col6">无持续风向</td>
+        <td class="col7">微风</td>
+      </tr>
+      <tr>
+        <td class="col2">夜间</td>
+        <td class="col3"><img src="../img/mv/10/10-1/moon.jpg" alt=""></td>
+        <td class="col4">晴</td>
+        <td class="blue col5">低温 -4℃</td>
+        <td class="col6">无持续风向</td>
+        <td class="col7">微风</td>
+      </tr>
+      <table class="fenge" cellspacing="0">
+        <tr>
+          <td rowspan="2" class="red col1">23日星期六</td>
+          <td class="col2">白天</td>
+          <td class="col3"><img src="../img/mv/10/10-1/sun.jpg" alt=""></td>
+          <td class="col4">晴</td>
+          <td class="red col5">高温 9℃</td>
+          <td class="col6">无持续风向</td>
+          <td class="col7">微风</td>
+        </tr>
+        <tr>
+          <td>夜间</td>
+          <td><img src="../img/mv/10/10-1/cloud.jpg" alt=""></td>
+          <td>阴</td>
+          <td class="blue">低温 -2℃</td>
+          <td>无持续风向</td>
+          <td>微风</td>
+        </tr>
+      </table>
+    </tbody>
+  </table>
+</body>
+
+</html>
