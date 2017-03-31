@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据表例</title>
+    <script type="text/javascript">
+        function func() {
+            var mXn = new Array(8);
+            for (var i = 0; i < 8; i++) {
+                mXn[i] = new Array();
+                for(var j=0;j<8;j++)
+                {
+                    mXn[i][j]="第"+i+"行"+j+"列";
+                }
+            }
+            document.write("<table border=\"1\" width=\"700\">");
+            for (var i = 0; i < 8; i++) {
+                document.write("<tr>");
+                for (var j = 0; j < 8; j++) {
+                    document.write("<td>");
+                    document.write(mXn[i][j]);
+                    document.write("</td>");
+                    
+                }
+                document.write("</tr>");
+            }
+            
+        }
+        func();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

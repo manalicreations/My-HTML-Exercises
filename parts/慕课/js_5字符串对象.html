@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_5String对象</title>
+    <script type="text/javascript">
+        //字符串基础例子：
+        function stringie(){
+            var mystr = "I am going to build my own companion!";
+            //定义一个字符串
+            var myl = mystr.length;
+            //访问字符串对象的length属性
+            var mycstr = mystr.toUpperCase(); //toLowerCase()
+            //访问字符串的方法
+            document.write(myl+'<br/>'+'\n'+mycstr);
+        }
+
+        //返回指定位置的字符：
+        //x.charAt(index--长度:0到x.length-1),空格也算在内
+        function strie(){
+            var mystr = "I am going to build my own companion!";
+            document.write(mystr.charAt(8));
+        }
+
+        //返回指定的字符串在原字符串中首次出现的位置号：
+        //x.indexOf('substring',startpos--0到x.length-1)
+        function strie1(){
+            var mystr = "I am going to build my own companion!";
+            document.write(mystr.indexOf("n")+'<br/>');
+            //document.write(mystr.indexOf('m',17));
+            //从mystr的第17个位置往后找m的位置号
+    document.write(mystr.indexOf('m',mystr.indexOf('m')+1)+'<br/>');
+    document.write(mystr.indexOf('m',mystr.indexOf('own'))+'<br/>');
+    document.write(mystr.indexOf('going'));
+            
+        }
+
+        //字符串分割：
+    //x.split(separator--把哪个字符当成分割符,limit--割成几份)
+    //separator为""，原字符串的每个字符之间都被分割
+    //limit不写，则不限分割次数
+    //limit<总长度，则该limit后面的不显示
+        function strie2(){
+            var mystr = "www.google.com";
+            document.write(mystr.split("")+'<br/>');
+            document.write(mystr.split('',6)+'<br/>');
+            document.write(mystr.split('.')+'<br/>');
+            document.write(mystr.split('.',2));
+        }
+        function strie2_1(){
+             var mystr="86-010-85468578";
+             var mystrarr=mystr.split("-");
+                for(var i=0; i<mystrarr.length; i++)
+                {
+                    document.write("第"+i+"个元素："+mystrarr[i]+" <br />");
+                }
+        }
+
+        //提取子字符/串：
+        //x.substring(startPos,stopPos) 位置，位置
+        //statPos：可负整数，开始的位置(包含)，必需写
+   //stopPos：非负整数，结束的位置(不包含)，不写/超出就直到字符串的结尾
+        //开始 = 结束，返回一个空串
+        //开始 > 结束，系统会自动交换这两个参数
+        function strie3(){
+            var mystr = "I am going to build my own companion!";
+            document.write(mystr.substring(4)+'<br/>');
+        document.write(mystr.substring(mystr.indexOf('my own'),mystr.indexOf('my own')+"my own".length)+'<br/>');
+            document.write(mystr.substring(6,25)+'<br/>');
+            document.write(mystr.substring(6,1000));
+        }
+
+        //提取指定数目的子字符/串：
+        //x.substr(startPos,length) 位置，长度
+        //statPos：整数，开始的位置(包含)，必需写，负时倒数
+        //开始为负，且绝对值大于length，则为0
+        //length：非负整数，要提取的子字符/串的长度，不写/超出父就直到字符串的结尾 
+        function strie4(){
+            var mystr = "I am going to build my own companion!";
+            document.write(mystr.substr(7)+'<br/>');
+            document.write(mystr.substr(2,2));
+        }
+
+        
+
+    </script>
+</head>
+<body>
+    <button onclick="stringie()">字符串基础例子</button><br/>
+    <button onclick="strie()">x.charAt()返回字符串的第8个字符</button><br/>
+    <button onclick="strie1()">x.indexOf()返回指定的字符串在原字符串中首次出现的位置号</button><br/>
+    <button onclick="strie2()">x.split()字符串分割</button>
+    <button onclick="strie2_1()">x.split()字符串分割</button><br/>
+    <button onclick="strie3()">x.substring()字符/串提取</button><br/>
+    <button onclick="strie4()">x.substr()提取指定数目的字符/串</button><br/>
+</body>
+</html>

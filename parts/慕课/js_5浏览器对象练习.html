@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_浏览器对象练习</title>
+</head>
+<body>
+<!--制作一个跳转提示页面：
+
+要求：
+
+1. 如果打开该页面后，如果不做任何操作则5秒后自动跳转到一个新的地址，如慕课网主页。
+
+2. 如果点击“返回”按钮则返回前一个页面。-->
+    <h1>操作成功</h1>
+    <p><b id="t">5</b>秒后回到主页 <a onclick="goback()" href="">返回</a></p>
+
+    <script type="text/javascript">
+        
+        var i = 5;
+        setInterval(function(){
+            i--;
+            t.innerHTML = i; //b标签的id是t。改变该标签内的内容，即t.innerHTML=新内容，会覆盖原内容
+            if (i==0) {
+                window.location.href = 'http://www.bing.com';
+                // 设置当前页面的url并跳转
+            }
+        },1000)
+       
+        function goback(){
+            history.go(-1);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>htmlcssjs_选项卡练习</title>
+    <style type="text/css">
+    /*body{font-size: 63%} 声明后 1em=10px*/ 
+        *{margin: 0; padding: 0; font: 12px normal "microsoft yahei"; }
+        #main{width: 300px; margin: auto;}
+        #nav{list-style: none; height: 50px; border-bottom: 2px solid #990505; padding-left: 4px;}
+        #nav li{float: left;  border: 1px solid #BAB7B7; border-bottom: none; margin: 18px 8px 0 0; text-align: center; line-height: 30px; width: 56px; color: #000; display: inline-block; cursor: pointer;}
+        #nav li.on{border-top:2px solid #990505;border-bottom: 3px solid #fff;}
+        #main div{padding-top: 6px; border: 1px solid #415BC3; border-top: none; margin: ; text-indent:6px;  line-height: 24px; }
+        .hide{display: none;}        
+    </style>
+    <script type="text/javascript">
+       window.onload = function(){
+            var main = document.getElementById('main');
+            var nav = main.getElementsByTagName('ul')[0];
+            var lis = nav.getElementsByTagName('li');
+            var divs = main.getElementsByTagName('div');
+            
+            for (var i= 0,len = lis.length;i<len;i++){ //通过遍历获取所有i编号的li元素
+                lis[i].index = i; //定义一个index属性对li进行编号
+                lis[i].onclick = function(){
+                    for (var n = 0; n < len; n++) { //通过第二次遍历初始化所有li和div的样式为 不显示
+                        lis[n].className = "";
+                        divs[n].className = "hide";
+                    }
+                    this.className = "on"; //点击li时触发li的相应样式
+                    divs[this.index].className = ""; //点击li时触发 之前用li的index编号绑定的指定div 的相应样式
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+    <ul id="nav">
+        <li class="on">房产</li>
+        <li >家居</li>
+        <li >二手房</li>
+    </ul>
+    <div>
+        <p>275万购昌平邻铁三居 总价20万买一居</p>
+        <p>200万内购五环三居 140万安家东三环</p>
+        <p>北京首现零首付楼盘 53万购东5环50平</p>
+        <p>京楼盘直降5000 中信府 公园楼王现房</p>
+    </div>
+    <div class="hide">
+        <p>40平出租屋大改造 美少女的混搭小窝</p>
+        <p>经典清新简欧爱家 90平老房焕发新生</p>
+        <p>新中式的酷色温情 66平撞色活泼家居</p>
+        <p>瓷砖就像选好老婆 卫生间烟道的设计</p>
+    </div>
+    <div class="hide">
+        <p>通州豪华3居260万 二环稀缺2居250w甩</p>
+        <p>西3环通透2居290万 130万2居限量抢购</p>
+        <p>黄城根小学学区仅260万 121平70万抛!</p>
+        <p>独家别墅280万 苏州桥2居优惠价248万</p>
+    </div>
+    </div>
+</body>
+</html>

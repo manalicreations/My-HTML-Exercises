@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新窗口打开网站</title>
+    <script type="text/javascript">
+        function open_new_page(){
+            if(confirm("是否打开新页面?")){
+               var url = prompt("请输入网址：","http://www.baidu.com");
+                window.open(url,"_blank","toolbar=no, menubar=no, scrollbars=yes,  width=400, height=400");
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="传送门" onclick="open_new_page()"  />
+</body>
+</html>

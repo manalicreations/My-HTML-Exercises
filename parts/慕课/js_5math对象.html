@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_5math对象</title>
+    <script type="text/javascript">
+        //math对象，提供对数据的数学计算：
+        function mathie(){
+            var mypi = Math.PI;
+            var myabs = Math.abs(-15);
+            document.write(mypi+"<br/>");
+            document.write(myabs);
+        }
+        /*Math对象是固有的，无需创建，直接把Math作为对象使用就可调用其所有属性和方法。
+         
+        Math 对象属性：
+            E       返回算数常量e，即自然对数的底数(约等于2.718)
+            LN2     返回2的自然对数(约等于0.693)
+            LN10    返回10的自然对数(约等于2.302)
+            LOG2E   返回以2为底的e的对数(约等于1.442)
+            LOG10E  返回以10为底的e的对数(约等于0.434)
+            PI      返回圆周率(约等于3.14159)
+            SQRT1_2 返回2的平方根的倒数(约等于0.707)
+            SQRT2   返回2的平方根(约等于1.414)
+
+        Math 对象方法：
+            abs(x)      返回数的绝对值
+            acos(x)     返回数的反余弦值
+            asin(x)     返回数的反正弦值
+            atan(x)     返回数字的反正切值
+            atan2(y,x)  返回由x轴到点(x,y)的角度(以弧度为单位)
+            ceil(x)     对数进行上舍入。向上取整
+            cos(x)      返回数的余弦值
+            exp(x)      返回e的指数
+            floor(x)    对数进行下舍入。向下取整
+            log(x)      返回数的自然对数(底为e)
+            max(x,y)    返回x和y中的最高值
+            min(x,y)    返回x和y中的最低值
+            pow(x,y)    返回x的y次幂
+            random()    返回0~1之间的随机数
+            round(x)    把数四舍五入为最接近的整数 x.5向上舍入
+            sin(x)      返回数的正弦值
+            sqrt(x)     返回数的平方根
+            tan(x)      返回返回角的正切
+            toSource()  返回该对象的源代码
+            valueOf()   返回Math对象的原始值     */
+
+        //向上舍入，向大舍入
+        function ceilie(){
+            document.write("向上取整:0.8="+Math.ceil(0.8)+"<br/>");
+            document.write("向上取整:6.3="+Math.ceil(6.3)+"<br/>");
+            document.write("向上取整:5="+Math.ceil(5)+"<br/>");
+            document.write("向上取整:3.5="+Math.ceil(3.5)+"<br/>");
+            document.write("向上取整:-5.1="+Math.ceil(-5.1)+"<br/>");
+            document.write("向上取整:-5.9="+Math.ceil(-5.9));
+        }
+        function ceilie2(){
+            var x = [3.3,-0.1,-9.9,8.9]
+            for (var i = 0; i < x.length; i++) {
+                document.write("向上取整:"+x[i]+'='+Math.ceil(x[i])+'<br/>');
+            }
+        }
+
+        //向下舍入，向小摄入
+        function floorie(){
+            var x = [0.8,6.3,5,3.5,-5.1,-5.9]
+            for (i in x) {
+                document.write("向下取整:"+x[i]+'='+Math.floor(x[i])+'<br/>');
+            }
+        }  //for(var i=0; i<x.length;i++)是有序从左到右循环
+            //两者不同概念，不能混淆
+           //for(i in x) 是从左到右遍历全部内容以及属性
+
+        //向最近整数舍入，x.5向上舍入
+        function roundie(){
+            var x = [1.6,2.5,0.49,-6.4,-6.6,-1.5]
+            for (i in x){
+                document.write("向最近取整:"+x[i]+'='+Math.round(x[i])+'<br/>');
+            }
+        }
+
+        //取得一个>=0但<1的符号为正的随机数值
+        function randomie(){
+            alert(Math.random());
+            //alert((Math.random())*10);
+        }
+
+        //随机取数*10化整
+        function ie(){
+            alert(Math.round((Math.random())*10));
+        }
+    </script>
+</head>
+<body>
+    <button onclick="mathie()">Math数学计算示例</button><br/>
+    <button onclick="ceilie()">Math.ceil()向大取整</button>
+    <button onclick="ceilie2()">Math.ceil()向大取整2</button><br/>
+    <button onclick="floorie()">Math.floor()向小取整</button><br/>
+    <button onclick="roundie()">Math.round()向最近取整</button><br/>
+    <button onclick="randomie()">Math.random()取0~1之间随机数</button><br/>
+    <button onclick="ie()">随机取数*10化整</button><br/>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_5对象练习</title>
+    <script type="text/javascript">
+        /*1、显示打印的日期。 格式为类似“XXXX年XX月XX日 星期X” 的当前的时间。
+
+          2、计算出该班级的平均分（保留整数）。*/
+
+        document.write('同学成绩数据如下：'+'<br/>'+
+         "小明:87; 小花:81; 小红:97; 小天:76; 小张:74; 小小:94; 小西:90; 小伍:76; 小迪:64; 小曼:76"+'<br/>');
+
+        var date = new Date();
+        var day = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        var info = "小明:87; 小花:81; 小红:97; 小天:76; 小张:74; 小小:94; 小西:90; 小伍:76; 小迪:64; 小曼:76";
+        var y = date.getFullYear();
+        var m = date.getMonth()+1;
+        var d = date.getDate();
+        var w = day[date.getDay()];
+
+        var sarr = info.split(';');
+        var sum=0; av =0;
+            for (var i = 0; i <sarr.length; i++) {
+                var x = sarr[i].indexOf(':');
+                s = sarr[i].substr(x+1,2) ;
+                sum+=parseInt(s);
+             //document.write(sum);
+            }
+            //av= sum/sarr.length;
+            av=Math.floor(sum/sarr.length);
+            
+            document.write(y+'年'+m+'月'+d+'日'+'&nbsp'+w+'&nbsp'+'班级平均分：'+av);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_事件练习：简单计算器</title>
+    <script type="text/javascript">
+        function count(){
+            //获取第一个输入框的值： 
+            //parseInt()函数可解析一个字符串，并返回一个整数
+            var a = parseInt(document.getElementById("num1").value);
+            //获取第二个输入框的值：
+            var b = parseInt(document.getElementById("num2").value);
+            //获取运算符：
+            var operator = document.getElementById("operator").value;
+            //获取不同运算符所产生的值：
+            var c="";
+            switch (operator){
+                case"+": 
+                    c=a+b;
+                    break;
+                case"-": 
+                    c=a-b;
+                    break;
+                case"*": 
+                    c=a*b;
+                    break;
+                case"/":
+                    c=a/b;
+                    break;
+            }
+            //设置结果输入框的值：
+            document.getElementById("result").value = c;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="num1" />
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="num2" />
+    <button value="=" onclick="count()">=</button>
+    <input type="text" id="result" />
+</body>
+</html>

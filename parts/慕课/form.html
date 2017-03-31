@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content=" text/html;charset=UTF-8" />
+	<title>practice on form</title>
+</head>
+<body>
+	<form name="用户名/密码" method="get/post" action="save.php">
+		<label for="username">用户名:</label>
+		<input type="text" name="username" id="username" placeholder="输入你的用户名" />
+		<br />
+		<label for="pass">密&nbsp;码:</label>
+		<input type="password" name="pass" id="pass" placeholder="输入你的密码" />
+		<br>
+		<label for="email">输入你的邮箱地址：</label>
+		<input type="email" id="email" placeholder="Enter Email">
+		<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="submit" value="确定" />
+		<input type="reset" name="reset" value="重置" />
+	</form>
+	<hr>
+	<form name="文本域" method="get/post" action="save.php">
+		<label>个人简介：</label>
+		<br>
+		<textarea cols="10" rows="50" placeholder="请在此输入"></textarea>
+		<br>
+		<input type="submit" name="submit" value="确定">
+		<input type="reset" name="reset" value="重置">
+	</form>
+	<hr>
+	<form name="单选/复选" method="get/post" action="save.php">
+		你喜欢吃：<br>
+		<input type="radio" name="radiolike" value="水果" checked="checked" id="fruit">
+		<label for="fruit">水果</label>
+		<br>
+		<input type="radio" name="radiolike" value="肉" id="meat">
+		<label for="meat">肉</label>
+		<br>
+		<input type="radio" name="radiolike" value="大米" id="rice">
+		<label for="rice">大米</label>
+		<br><br>
+		你喜欢的交通工具：<br>
+		<input type="checkbox" name="checkbox1" value="汽车" checked="checked" id="car">
+		<label for="car">汽车</label>
+		<br>
+		<input type="checkbox" name="checkbox2" value="飞机" id="plane">
+		<label for="plane">飞机</label>
+		<br>
+		<input type="checkbox" name="checkbox3" value="大炮" id="cannon">
+		<label for="cannon">大炮</label>
+		<br>
+		<input type="checkbox" name="checkbox4" value="船" checked="checked" id="ship">
+		<label for="ship">船</label>		
+		<br>
+		<input type="submit" name="submit" value="确定">
+		<input type="reset" name="reset" value="重置">
+	</form>
+	<hr>
+	<form name="下拉单/复选" method="get/post" action="save.php">
+		<label>爱好：</label>
+		<select> <!--复选<select multiple="multiple">需用SYS+鼠标点击，不推荐-->
+			<option value="看书">看书</option>
+			<option value="看电影">看电影</option>
+			<option value="旅游">旅游</option>
+			<option value="听音乐" selected="selected">听音乐</option>
+		</select>
+	</form>
+	<br>
+	<label for="fav-fruit">your favourite fruit：</label>
+	<select name="fav-fruit" id="fav-fruit" size="3" style="vertical-align: top">
+   		<option value="apple">apple</option>
+   		<option value="banana">banana</option>
+   		<option value="pear">pear</option>
+   		<option value="orange">orange</option>
+   		<option value="peach">peach</option>
+	</select>
+	<hr>
+
+</body>
+</html>

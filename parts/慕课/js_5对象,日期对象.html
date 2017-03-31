@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_对象,日期对象</title>
+    <script type="text/javascript">
+    /*var objectName = new Array(6); ---定义对象
+          或者 var objectName=[];
+          var myl = objectName.length; ---访问对象的长度属性
+
+          var mystr = "Hello World!" ---定义对象
+          var request = mystr.toUpperCase(); ---访问对象方法
+                              文本全大写              */
+
+    /*Date 日期对象：
+        var a = new Date(); 
+        //定义时间对象,并初始值为当前电脑系统时间。
+        var b = new Date(2012,10,1); 
+        //自定义时间，2012年11月1日，月份代码index为0-11。
+        var c = new Date('Sep 3,2013');
+        //自定义时间，2013年9月3日，英文格式精确定义。
+        document.write("<br />" + a.getTime() + "毫秒");
+        //自1970/01/01 至今的毫秒数
+        document.write("<br />" + a.getTime() / 1000 / 60 / 60 / 24 / 365 + "年");
+        //自1970/01/01 至今有多少年
+
+        日期对象访问方法：<日期对象>.<方法>
+        get/setDay()        返回/设置 星期 需设置见列子1
+        get/setDate()       返回/设置 日期
+        get/setMonth()      返回/设置 月份0-11
+        get/setYear()       返回/设置 年份,会变成19开头
+        get/setFullYear()   返回/设置 四位数年份，18=0018
+        get/setSeconds()    返回/设置 秒钟数
+        get/setMinutes()    返回/设置 分钟数
+        get/setHours()      返回/设置 小时，24制
+        get/setTime()       返回/设置 时间（毫秒为单位）*/
+
+        //输出星期几
+        function weekday(){
+            var mydate = new Date();
+            var weekday = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            //var mynum = mydate.getDay();
+            alert(mydate.getDay()+'\n'+'今天是:'+weekday[mydate.getDay()]/*weekday[mynum]*/);
+        }
+
+        //输出时间
+        function clockie(){
+            var t = new Date();
+            var x = document.getElementById('demo');
+            x.innerHTML=t.toLocaleTimeString();
+        }
+        //将当前时间推迟2小时
+        //一小时 60 分，一分 60 秒，一秒 1000 毫秒
+        function delay2h(){
+            var mydate = new Date();
+            document.write('当前时间:'+mydate+'<br/>');
+            mydate.setTime(mydate.getTime()+2*60*60*1000);
+            document.write('推迟后为:'+mydate);
+            /*var mynew = new Date(mydate.getTime()+2*60*60*1000);
+            alert('当前时间:'+mydate+'\n'+'推迟后为:'+mynew); */
+        }
+
+        
+    </script>
+</head>
+<body>
+    <button onclick="weekday()">星期几</button>
+    <button onclick="delay2h()">当前时间推迟2小时</button><br/>
+    <p id="demo">点表看时间哦</p><button onclick="clockie()">表</button>
+</body>
+</html>

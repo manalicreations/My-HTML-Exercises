@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_for.if.elseif.switch.while.dowhile.break.continu</title>
+    <script type="text/javascript">
+        function show_ifelseif(){ //ifelseif 用==
+            var myskill = prompt('请输入你的技能：', '技能名称');
+            if(myskill == null){
+                alert("你取消了输入");
+            }
+            else if(myskill == "" || myskill == "技能名称"){
+                alert("你的输入为空");
+                ifelseif();
+            }
+            else{
+                alert("你好，手艺人");
+            }
+        }
+       
+        function show_switch(){
+            var myweek = prompt("请输入今天星期几");
+            switch (myweek){
+                case "1": //用双/单引号是因为switch要求全等===，不然不会解析
+                case '2': 
+                    alert("学习");
+                    break;
+                case '3': 
+                case '4': 
+                    alert("实践");
+                    break;
+                case "5":alert("总结");break;
+                case '6': 
+                case '7':  
+                    alert("休息");
+                    break;
+                default:
+                    alert("请输入阿拉伯数字");
+            }
+        }
+
+        function show_for1(){ //先更新，再判断
+            var numa;
+            for (var numa = 1; numa <= 3; numa++) {  //初始化值；循环条件；循环后条件值更新
+                document.write("取出第"+numa+"个球<br/>");
+            }
+        }
+        function show_for2(){ //1加到10
+            var numb, sum=0; //这里sum=0是初始化sum归零的意思
+            for (var numb=1; numb<=10; numb++){
+                sum=sum+numb;  
+                //alert("合计："+sum);  放这里会输出每次for循环后的每步结果，直到最终结果  
+            }
+            alert("合计："+sum);
+        }
+
+        function show_while() { //先判断，再更新
+            var num=0; //初始化，是几就从几开始
+            while(num<=3){ //条件判断
+                document.write("取出第"+num+"个球"+"<br/>");
+                num=num+1; //条件更新 可写成num++
+            }
+        }
+
+        function show_dowhile(){ //先至少执行1次，再判断，为真就继续
+            var mynum=4;
+            do{
+                document.write("数字"+mynum+"<br/>");
+                mynum--; //更新条件
+            }
+            while(mynum>=1) //判断条件
+        }
+
+        function show_break() // 遇到某条件，终止整个循环
+        {
+            var myscore=[100,89,57,91],i=0;
+            while(i<myscore.length)
+            {
+                if(myscore[i]<60)
+                {
+                    document.write("发现有个成绩为："+myscore[i]+"，不及格，终止播报"+"<br/>");
+                    break;
+                }
+                document.write("成绩为："+myscore[i]+"及格，继续播报"+"<br/>");
+                i=i+1;
+            }
+        }
+
+        function show_continue(){ // 遇到某条件，跳过，继续整个循环
+                                  // 不推荐用于while，判断卡死，无法更新
+            var myscore=[100,89,57,91]//定义数组mynum并赋值
+            var i;
+                for(i=0;i<myscore.length;i++){
+                    if(myscore[i]<60){ 
+                        document.write("成绩不及格，不输出！"+"<br>");
+                        continue;
+                    }
+                document.write("成绩:"+myscore[i]+"及格，输出!"+"<br>");
+                }
+            }
+    </script>
+</head>
+<body>
+    <input type="button" id="ifelseif_button" value="ifelseif" onclick="show_ifelseif()" />
+    <input type="button" id="switch_button" value="switch" onclick="show_switch()" />
+    <input type="button" id="for_button" value="for1" onclick="show_for1()" />
+    <button onclick="show_for2()">for2</button>
+    <input type="button" id="for_button" value="while" onclick="show_while()" />
+    <input type="button" id="for_button" value="dowhile" onclick="show_dowhile()" />
+    <button onclick="show_break()">break</button>
+    <button onclick="show_continue()">continue</button>
+</body>
+</html>

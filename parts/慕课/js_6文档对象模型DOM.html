@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_6文档对象模型DOM</title>
+    <!--
+    文档对象模型DOM（Document Object Model）定义访问和处理HTML文档的标准方法。DOM 将HTML文档呈现为带有元素、属性和文本的树结构（节点树）。
+
+    HTML文档可以说由节点构成的集合，DOM节点有:
+    1. 元素节点：<html>、<body>、<p>等都是元素节点，即标签。
+
+    2. 文本节点:向用户展示的内容，如<li>...</li>中的JavaScript、DOM、CSS等文本。
+
+    3. 属性节点:元素属性，如<a>标签的链接属性href="..."
+
+    在文档对象模型 (DOM) 中，每个节点都是一个对象。DOM 节点有三个重要的属性 ：
+    只读1. nodeName属性: 返回一个字符串，其内容是给定节点的名字
+            元素节点的 nodeName 与标签名相同
+            属性节点的 nodeName 是属性的名称
+            文本节点的 nodeName 永远是 #text
+            文档节点的 nodeName 永远是 #document
+
+        2. nodeValue属性：返回给定节点的当前值
+            元素节点的 nodeValue 是 undefined 或 null
+            文本节点的 nodeValue 是文本自身
+            属性节点的 nodeValue 是属性的值
+
+    只读3. nodeType属性：返回一个整数，此整数代表给定节点的类型。常用为：
+            元素类型    节点类型
+              元素          1
+              属性          2
+              文本          3
+              注释          8
+              文档          9
+
+    遍历节点树：
+        childNodes      返回一个数组，此数组由给定元素节点的子节点构成
+        firstChild      返回第一个子节点
+        lastChild       返回最后一个子节点
+        parentNode      返回一个给定节点的父节点
+        nextSibling     返回给定节点的下一个子节点
+        previousSibling 返回给定节点的上一个子节点
+    以上图ul为例，它的父级节点body,它的子节点3个li,它的兄弟结点h2、P
+
+    DOM操作
+        document.createElement(element) 创建一个新元素点
+        document.createTextNode()       创建一个包含有给定文本的新文本节点
+        appendChild()   在指定节点的最后一个子节点列表之后，添加一个新子节点
+        insertBefore()  把一个给定节点插入到一个给定元素节点的给定子节点前面
+        removeChild()   从一个给定元素中删除一个子节点
+        replaceChild()  把一个给顶元素里的一个子节点替换为另外一个节点
+    -->
+</head>
+<body>
+<p>列1：</p>
+<a name="link" href="#">链接1</a>
+<a name="link" href="#">链接2</a>
+<h1 name="link" >链接3</h1>
+<button onclick="gebn()">getElementsByName()</button> <br/>
+<script type="text/javascript">
+        //document.getElementsByName(name)  Elements!!!
+        //文档中name属性可能不唯一
+        //返回带有指定名称的节点对象的【集合】---伪数组,有length属性，可遍历
+        function gebn(){
+            var x = document.getElementsByName('link');
+            alert(x+'\n'+x.length);
+        }
+        //document.getElementsByTagName(tagename)   Elements!!!
+        //返回带有指定标签名的节点对象的【集合】返回元素的顺序是它们在文档中的顺序。
+        // Tagname是标签的名称，如p、a、img等标签名
+</script>
+<p name="link">点击获取目前为止所有<标签>【节点】的类型、名称、值：</p>
+<script type="text/javascript">
+    var x = document.getElementsByName('link');
+    for (var i = 0; i < x.length; i++) {
+        document.write(x[i].nodeType+'&nbsp;');
+        document.write(x[i].nodeName+'&nbsp;');
+        document.write(x[i].nodeValue+'&nbsp;');
+    }
+</script>
+<br/>
+<br/>
+<p>列2：</p>
+<!--3种get应用-->
+        <form>
+          请选择你爱好:<br>
+          <input type="checkbox" name="hobby" id="hobby1">音乐&nbsp;
+          <input type="checkbox" name="hobby" id="hobby2">登山&nbsp;
+          <input type="checkbox" name="hobby" id="hobby3">游泳&nbsp;
+          <input type="checkbox" name="hobby" id="hobby4">阅读&nbsp;
+          <input type="checkbox" name="hobby" id="hobby5">打球&nbsp;
+          <input type="checkbox" name="hobby" id="hobby6">跑步&nbsp;<br>
+          <input type="button" value = "全选" onclick = "checkall();">
+          <input type="button" value = "全不选" onclick = "clearall();">
+          <p>请输入您要选择爱好的序号，序号为1-6:</p>
+          <input id="wb" name="wb" type="text" >
+          <input name="ok" type="button" value="确定" onclick = "checkone();">
+        </form>
+        <script type="text/javascript">
+        function checkall(){
+            var hobby = document.getElementsByTagName("input");
+            for(i=0;i<hobby.length;i++){
+                if(hobby[i].type=="checkbox"){
+                    hobby[i].checked=true;
+                }
+            }
+        }
+        function clearall(){
+            var hobby = document.getElementsByName("hobby");
+            for (i=0;i<hobby.length;i++){
+                hobby[i].checked=false;
+            }
+        }
+        
+        function checkone(){
+            var j=document.getElementById("wb").value;
+            var hobby=document.getElementById("hobby"+j);
+            hobby.checked=true;
+        }      
+        </script>
+<br/>
+<br/>
+<p>列3：</p>
+<!--getAttribute(标签属性名称)
+    setAttribute(name，value)增加一个指定名称和值的新属性，或者把一个现有的属性设定为指定的值。
+-->
+<div id="listie">
+    <p id="courselist">课程列表</p>
+        <ul id="al">
+            <li id="第1个li">HTML</li>
+            <li>CSS</li>
+            <li id="第3个li">JAVASCRIP</li>
+            <li id="第4个li">JQUERY</li>
+            <li id="第5个li">HTML5</li>
+        </ul>
+</div>
+<p>▼以下为不为空的li标签的id值:</p>
+<script type="text/javascript">
+    var x = document.getElementsByTagName('li');
+    for (var i = 0; i < x.length; i++) {
+        var y = x[i].getAttribute('id');
+        if (y!=null) {
+            document.write(y+'&nbsp');
+        }
+    }  
+</script>
+<br/>
+<p>▼给第一个li加上新title并赋值：</p>
+<script type="text/javascript">
+    var t = document.getElementById('第1个li');
+    t.setAttribute('title','JS');
+    document.write(t.getAttribute('title'));
+</script>
+<br/>
+<!--
+childNodes      返回一个数组，此数组由给定元素节点的子节点构成
+具有length属性, 如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList
+【ps：】
+1. IE全系列(edge除外)、firefox、chrome、opera、safari兼容问题
+
+2. 节点之间的【空白符】，在firefox、chrome、opera、safari  edge浏览器是文本节点
+-->
+<p>▼childNodes,输出列表ul下的子节点数和类型：</p>
+<script type="text/javascript">
+    var x = document.getElementsByTagName('ul')[0].childNodes;//nodes！！
+    document.write('ul的子节点个数为：'+x.length+'<br/>');
+    document.write('ul的子节点类型为：'+x[1].nodeType);
+</script>
+<p>▼first/lastChild,输出列表ul下的第一/最后的子节点的名称：</p>
+<!--
+1、firstChild 属性返回‘childNodes’数组的第一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+语法：node.firstChild
+说明：与elementNode.childNodes[0]是同样的效果。 
+
+2、 lastChild 属性返回‘childNodes’数组的最后一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+语法：node.lastChild
+说明：与elementNode.childNodes[elementNode.childNodes.length-1]是同样的效果。
+【空白符算在内】
+-->
+<script type="text/javascript">
+    var x = document.getElementById('al');
+    document.write(x.firstChild.nodeName+'<br/>');
+    document.write(x.lastChild.nodeName+'<br/>');
+</script>
+
+<p>▼parentNode,输出ul的父/祖节点的名称：</p>
+<!--
+获取指定节点的父节点
+语法：elementNode.parentNode
+注意:父节点只能有一个。
+【不含空白符】
+-->
+<script type="text/javascript">
+    var mynode = document.getElementById('al');
+    document.write('ul的父节点为：'+mynode.parentNode.nodeName+'<br/>');
+    document.write('ul的祖节点为：'+mynode.parentNode.parentNode.nodeName);
+</script>
+
+<p>▼next/previousSibling,输出li的“元素类”弟弟/长兄节点的内容：</p>
+<!--
+1. nextSibling 属性可返回某个节点之后紧跟的节点（处于同一树层级中）。
+语法：nodeObject.nextSibling
+说明：如果无此节点，则该属性返回 null。
+
+2. previousSibling 属性可返回某个节点之前紧跟的节点（处于同一树层级中）。
+语法：nodeObject.previousSibling  
+说明：如果无此节点，则该属性返回 null。
+
+注意: 两个属性获取的是节点。IE会忽略节点间生成的空白文本节点（例如，换行符号），而其它浏览器不会忽略。
+【包含空白符】
+-->
+<script type="text/javascript">
+    function next_tag(n){  //此函数用于跳过不是元素节点的节点
+        var x = n.nextSibling; 
+        while(x && x.nodeType != 1) { //x存在，同时，x不是元素节点  判断
+            x = x.nextSibling;        // true，跳过，继续验证下一个节点   条件更新
+        }
+        return x;   // fals，找出x存在同时x是元素类节点   判断通过，结束
+    }
+    // 给以上函数中的x赋值：
+    var x= document.getElementsByTagName('li')[2]; 
+    document.write('选定的元素节点x是：'+
+        x.nodeName+'&nbsp'+
+        'id：'+x.getAttribute('id')+'&nbsp'+
+        '内容为：'+x.innerHTML+'<br/>');
+    //调用函数，并输出结果：
+    var y = next_tag(x);
+    if (y != null) { //不是null，那就有节点，并且是元素类的。
+                     // 是null那就到底了，没有更多的节点了，结果就返回null
+        document.write('x的下一个兄弟元素节点是：'+
+            y.nodeName+'&nbsp'+
+            'id：'+y.getAttribute('id')+'&nbsp'+
+            '内容为：'+y.innerHTML);
+    }
+</script>
+<br/>
+<br/>▲<button onclick="yaoer()">appendChild,赐一个幺儿</button>
+<!--
+在指定节点的最后一个子节点列表之后添加一个新的子节点。
+语法:appendChild(newnode)
+参数:newnode：指定追加的节点
+-->
+<script type="text/javascript">
+    function yaoer(){
+    var a = document.getElementById('listie');
+    var yaoer = document.createElement('p');
+    yaoer.innerHTML = "上天赐予的幺儿";
+    a.appendChild(yaoer);
+    }
+</script>
+<br/>▲<button onclick="gege()">insertBefore,指定娃儿赐哥哥</button>
+<!--
+在指定节点的指定子节点前添加一个新的子节点。
+语法:insertBefore(newnode,node);
+参数:newnode: 要插入的新节点。
+     node: 指定此节点前插入节点。
+-->
+<script type="text/javascript">
+    function gege(){
+    var a = document.getElementById('al');
+    //var didi = document.getElementById("第5个li");
+    var gege = document.createElement('button');
+    gege.innerHTML = "上天赐予的哥";
+    a.insertBefore(gege,a.childNodes[4]); 
+    //此方法需除开【空白符】才能精确插入
+    }
+</script>
+<br/>▲<button onclick="rcie()">removeChild,成功删除某一个子节点并返回该节点</button>
+▲<button onclick="rcie2()">removeChild,遍历删除</button>
+<!--
+从子节点列表中删除某个节点。如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。
+语法:nodeObject.removeChild(node)
+参数:node ：必需，指定需要删除的节点。
+-->
+<script type="text/javascript">
+    function rcie(){
+        var a = document.getElementById('al');
+        var x = a.removeChild(a.childNodes[3]);
+        //x=null; 删除的子节点赋值给 x，这个子节点不在DOM树中，但是还存在内存中，可通过 x 操作。如果要完全删除对象，给 x 赋 null 值
+        alert('已删除节点的内容为：'+x.innerHTML);
+    }
+    function rcie2(){
+        var a = document.getElementById('al');
+        for (var i = a.childNodes.length-1; //i从最后一个删起
+            i >=0; i--) {
+            a.removeChild(a.childNodes[i]);
+        }
+    }
+</script>
+<br/>
+▲<button onclick="reie()">replaceChild,替换列表第4项</button>
+▲<button onclick="reie2()">replaceChild,替换列表第5项的标签</button>
+<!--
+实现子节点(对象)的替换。返回被替换对象的引用。 
+语法：node.replaceChild (newnode,oldnode ) 
+参数：newnode : 必需，用于替换 oldnode 的对象。 
+      oldnode : 必需，被 newnode 替换的对象。
+注意: 
+1. 当 oldnode 被替换时，所有与之相关的属性内容都将被移除。 
+2. newnode 必须先被建立。
+-->
+<script type="text/javascript">
+    function reie(){
+        var n = document.createElement('em');
+        n.innerHTML = "哎呦";  //连标签带内容都换
+        var o = document.getElementById('第4个li');
+        var x = o.parentNode.replaceChild(n,o);
+        alert(x);
+    }
+    function reie2(){
+        var n = document.createElement('i');
+        var o = document.getElementById('第5个li');
+        var oc = o.innerHTML;
+        o.parentNode.replaceChild(n,o);
+        n.innerHTML = oc;     
+    }
+
+</script>
+<br/>
+<!--
+创建元素节点craeteElement(tagname)
+-->
+<script type="text/javascript">
+    var body = document.body;
+    var x = document.createElement('input');
+    x.type = 'button';
+    //x.setAttribute('type','button');
+    x.value = '我是JS创建的';
+    //x.setAttribute('value','我是JS创建的');
+    x.setAttribute('name','xxx');
+    x.setAttribute('onclick','javascript:alert("js alert");');
+
+    body.appendChild(x); // 插入
+</script>
+<script type="text/javascript">
+//创建一个a标签，带链接、文字，并设置标签文字颜色
+    var body = document.body;
+    function createie(url,text){
+        var x = document.createElement('a');
+        x.href = url;
+        x.innerHTML = text;
+        x.style.color='red';
+        body.appendChild(x);
+    }
+    //调用函数
+</script>
+<button onclick="createie('http://www.bing.com','必应')">创建元素js函数</button>
+
+<!--
+创建文本节点createTextNode
+创建新的文本节点，返回新创建的 Text 节点。
+语法：document.createTextNode(data)
+参数：data : 字符串值，可规定此节点的文本。
+-->
+<script type="text/javascript">
+    var b = document.createElement('i');
+    i.idName = 'c';
+    var c = document.createTextNode('js创建的文字');
+    b.appendChild(c);
+    document.body.appendChild(b);
+</script>
+<br/>
+<br/>
+<script type="text/javascript">
+//获得浏览器窗口的尺寸（浏览器的视口，不包括工具栏和滚动条）的方法:
+    var a = window.innerWidth;
+    var b = window.innerHeight; // 通用
+    
+    var c = document.documentElement.clientWidth;
+    var d = document.documentElement.clientHeight; // 通用，IE8—
+    
+    var e = document.body.clientWidth;
+    var f = document.body.clientHeight; // IE8—
+    
+    var w= document.documentElement.clientWidth //兼容
+      || document.body.clientWidth;
+    var h= document.documentElement.clientHeight
+      || document.body.clientHeight;
+document.write('▼输出浏览器窗口可视区域宽高：'+'<br/>');
+document.write(a+'&nbsp'+b+'<br/>');
+document.write(c+'&nbsp'+d+'<br/>');
+document.write(e+'&nbsp'+f+'<br/>');
+document.write(w+'&nbsp'+h+'<br/>');
+</script>
+<p>clientHeight与height的区别是如果有滚动条时应减去滚动条的17px不可用部分,offsetHeight与Height的区别是增加了boder的高度,ScrollHeihgt与Height的区别是火狐下与offsetHeight一致,IE下如上所述.<a href="http://blog.csdn.net/xiebaochun/article/details/38382169">详细说明</a></p>
+
+<script type="text/javascript">
+//scrollHeight和scrollWidth，获取网页内容高度和宽度
+// IE Opera: scrollHeight 是网页内容实际高度，可以小于 clientHeight
+// NS FF: scrollHeight 是网页内容高度，不过最小值是 clientHeight。也就是说网页内容实际高度小于 clientHeight 时，scrollHeight 返回 clientHeight
+var sw = document.documentElement.scrollWidth
+         || document.body.scrollWidth;
+var sh = document.documentElement.scrollHeight
+         || document.body.scrollHeight;
+document.write('▼输出网页尺寸scrollW/H（宽高）：');
+document.write(sw+'&nbsp'+sh);
+</script>
+<br>
+<br>
+<script type="text/javascript">
+//offsetHeight = clientHeight + 滚动条 + 边框
+var ow= document.documentElement.offsetWidth
+    || document.body.offsetWidth;
+var oh= document.documentElement.offsetHeight
+    || document.body.offsetHeight;
+document.write('▼输出网页尺寸offsetW/H（宽高）：');
+document.write(ow+'&nbsp'+oh);
+</script>
+</body>
+</html>

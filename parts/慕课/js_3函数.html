@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <!--函数的作用：写一次，可反复使用，避免重复输入
+    格式：
+    function 函数名（参数1,参数2....）
+    {
+        函数体;
+    }
+    function定义函数的关键字
+    “函数名”你为函数取的名字，“函数体”替换为完成特定功能的代码-->
+    <script type="text/javascript">
+        function sub2() 
+        {
+            sub=5-2;    
+            alert(sub); 
+        }               
+        //sub2(); //这是在<script>标签里调用，直接写名字
+
+        function add3(a,b,c)
+        {
+            sum = a + b + c; 
+            document.write(a+"、"+b+"、"+c+"的和为："+sum+"<br/>");
+        }
+        //add3(2,79,64);
+
+        function add2(x,y)
+        {var sum,x,y;
+            sum = x+y;
+            return sum; //返回函数值,return后面的值叫做返回值
+        var result1,result2,sumall;
+        result1=add2(3,4); //语句执行后,result1变量中的值为7。
+        result2=add2(5,6);
+        sumall=result1+result2; 
+        alert(sumall);
+        }
+
+        function compare(a,b)
+        {var a,b;
+            if (a>b){return a;}
+            else if (a<b){return b;}
+            else {return "相等";}
+            
+        }
+    </script>
+    
+</head>
+<body>
+    <input type="button" value="一般代码" onclick="sub2()"> <!--通过按钮里的onclick点击调用函数/事件，直接写函数名-->
+    <button onclick="add3(2,4,99)">函数代码</button>
+    <button onclick="sumall()">函数结果的再应用</button>
+    <button onclick="compare(1,9)">函数练习：两数相比取大</button>
+</body>
+</html>

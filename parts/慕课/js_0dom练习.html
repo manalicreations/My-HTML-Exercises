@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+<title>DOM练习</title>
+<style type="text/css">
+body{font-size:12px;}
+#txt{
+    height:400px;
+    width:600px;
+    border:#333 solid 1px;
+    padding:5px;}
+p{
+    line-height:18px;
+    text-indent:2em;}
+</style>
+</head>
+<body>
+  <h2 id="con">JavaScript课程</H2>
+  <div id="txt"> 
+     <h5>JavaScript为网页添加动态效果并实现与用户交互的功能。</h5>
+        <p>1. JavaScript入门篇，让不懂JS的你，快速了解JS。</p>
+        <p>2. JavaScript进阶篇，让你掌握JS的基础语法、函数、数组、事件、内置对象、BOM浏览器、DOM操作。</p>
+        <p>3. 学完以上两门基础课后，在深入学习JavaScript的变量作用域、事件、对象、运动、cookie、正则表达式、ajax等课程。</p>
+  </div>
+  <form>
+  <!--当点击相应按钮，执行相应操作，为按钮添加相应事件-->
+    <input type="button" value="改变颜色" onclick="cc()">  
+    <input type="button" value="改变宽高" onclick="cwh()">
+    <input type="button" value="隐藏内容" onclick="ht()">
+    <input type="button" value="显示内容" onclick="st()">
+    <input type="button" value="取消设置" onclick="tclear()">
+  </form>
+  <script type="text/javascript">
+    function cc(){
+      //var cc = document.getElementById("txt");
+      //cc.style.color = "red";
+      //cc.style.backgroundColor = "yellow";//定义"改变颜色"的函数
+      document.getElementById("txt").style.color = "red";
+      document.getElementById("txt").style.backgroundColor = "yellow";
+    }
+
+    function cwh(){
+      var cwh = document.getElementById("txt");
+      cwh.style.width = "400px";
+      cwh.style.height = "200px";//定义"改变宽高"的函数
+    }
+
+    function ht(){
+      var ttxt = document.getElementById("txt");
+      ttxt.style.display = "none";//定义"隐藏内容"的函数
+    }
+
+
+    function st(){
+      document.getElementById("txt").style.display = "block";//定义"显示内容"的函数
+    }
+
+
+    function tclear(){ 
+      if (confirm ("是否取消设置?")) {
+        var origin = document.getElementById("txt");
+        origin.style.color = "#000";
+        origin.style.backgroundColor = "#fff";
+        origin.style.width = "600px";
+        origin.style.height = "400px";
+        origin.style.display = "block";
+      }
+    }//定义"取消设置"的函数
+      // 以上所有变量可以设定为一样的名称
+
+
+  </script>
+</body>
+</html>
+
+<!--
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>className属性</title>
+<style>
+    body{ font-size:16px;}
+    .one{
+    border:1px solid #eee;
+    width:230px;
+    height:50px;
+    background:#ccc;
+    color:red;
+    }
+  .two{
+    border:1px solid #ccc;
+    width:230px;
+    height:50px;
+    background:#9CF;
+    color:blue;
+  }
+  </style>
+</head>
+<body>
+    <p id="p1" > JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+    <input type="button" value="添加样式" onclick="add()"/>
+  <p id="p2" class="one">JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+    <input type="button" value="更改外观" onclick="modify()"/>
+
+  <script type="text/javascript">
+     function add(){
+        var p1 = document.getElementById("p1");
+         
+        p1.className = "one";
+     }
+     function modify(){
+        var p2 = document.getElementById("p2");
+        p2.className = "two";
+     }
+  </script>
+</body>
+</html>
+-->

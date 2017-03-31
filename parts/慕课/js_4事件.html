@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js事件</title>
+    <script type="text/javascript">
+        /*onclick鼠标单击事件，onmouseover鼠标经过事件， onmouseout鼠标移开事件，
+        onfocus光标聚焦，onblur光标离开，
+        onchange文本框内容改变事件，onselect文本框内容被选中事件，  
+        onload网页导入，onunload关闭网页，*/
+        var tag=0;
+
+        function openwin(){ //onclick
+            window.open('http://www.baidu.com','_blank','height=600,width=400,top=100,left=0,toolbar=no,menubar=no,scrollbars=no,status=no');
+        }
+
+        function message(){ //onmouseover
+            confirm("鼠标经过，我就弹出来");
+        }
+
+        function message2(){ //onmouseout
+            alert("不要移开");
+        }
+
+        function info(){ //onfocus
+            if(tag==0){  //为防止弹出死循环，使用了tag，最开头有var tag=0，未知其原理
+            alert("光标聚焦");
+            tag=1;      //tag后，此事件触发1次后失效
+            } 
+        }
+
+        function info2(){
+            alert("请再次确认");
+        }
+
+        function selected(){
+            alert("您触发了选中事件！"); }
+
+        function changed(){ //onchange是失焦时触发，oninput是元素发生改变时即刻触发
+            alert("你改变了文本内容");
+        }
+
+        function loading(){  //加载页面时触发onload事件，事件需写在<body>标签内
+        //可写在任意需加载的标签内，该标签加载前触发
+        //ie：页面 框架 表格 图像 音视频 链接 样式
+            alert("欢迎来到事件触发例子");
+        }
+
+        window.onunload= unloadMessage; //加了()，会在加载时就触发。只支持ie
+        function unloadMessage(){
+        /*离开页面有两种方式：
+            1.直接点×关闭页面or浏览器
+            2.刷新页面or从当前页面点击链接跳转只新页面
+        onunload只适用于方式2，onbeforeunload适用所有方式,但也只支持ie*/
+            alert("你确定要离开吗？");
+        }
+    </script>
+</head>
+<body onload="loading()">
+    <form>
+        <input type="button" name="鼠标点击事件" value="onclick" onclick="openwin()"/>
+        <input type="button" name="鼠标经过" value="onmoseover" onmouseover="message()"/>
+        <a href="http://www.baidu.com" onmouseout="message2()">onmouseout</a><br/>
+        <select name="请选择" onfocus="info()"> 
+        <!--此处js里不加tag会出现alert死循环，无法选择-->
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select><br/>
+        密码:<input type="text" name="光标失焦" value="默认文本" onblur="info2()"><br/>
+        请输入你的职业：<textarea name="summary" cols="20" rows="2" onselect="selected()" onchange="changed()">请写入</textarea><br> 
+        <!--选中“请写入”后，触发onselect事件/更改内容后，触发onchange事件-->
+
+    </form>
+</body>
+</html>

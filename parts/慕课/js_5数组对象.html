@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_5数组对象</title>
+    <script type="text/javascript">
+        /*var x = new Array(n)  定义有n个空元素的数组
+        var = [2,8,6];
+        数组名[下标] = 值;
+
+        数组属性：x.length = n
+        数组方法：
+            concat()       链接2/更多的数组，并返回结果
+            join()         把数组所有元素放入一个字符串，元素通过过指定分隔符分隔
+            pop()          栓除并返回数组的最后一个元素
+            push()         向数组末尾+1/更多的元素，并返回新的长度
+            reverse()      颠倒数组中元素的顺序
+            shift()        删除并返回数组的第一个元素
+            slice()        从某个已有的数组返回选定的元素
+            sort()         对数组的元素进行排序
+            splice()       删除元素，并向数组添加新元素
+            toSource()     返回该对象的源代码
+            toString()     把数组转换为字符串，并返回结果
+            toLocaleString() 把数组转换为本地数组，并返回结果
+            unshift()      向数组的开头+1/更多的元素，并返回新长度
+            valueOf()      返回数组对象的原始值    */
+
+        //数组连接concat():
+        //arrayX.concat(array1,array2,...,arrayN)
+        //不改变现有数组，结果为一个独立新副本
+        function concatie1(){
+            var mya = new Array(3);
+            mya[0] = "1";
+            mya[1] = "2";
+            mya[2] = "3";
+            alert('连接后为：'+mya.concat(4,5)+'\n'+'原数组为：'+mya);
+        }
+        function concatie2(){
+            var mya1 = new Array("hello!");
+            var mya2 = ['I','love'];
+            var mya3 = ['JavaScript','!'];
+            var mya4 = mya1.concat(mya2,mya3);
+            alert (mya4);
+        }
+
+        //指定分隔符连接数组元素join():
+        //把数组中所有元素放入一个字符串，元素间通过指定分隔符分隔
+        //x.join(separator---分隔符)
+        //不改变现有数组，结果为一个独立新副本
+        function joinie1(){
+            var mya = new Array(3);
+            mya[0] = "I";
+            mya[1] = "love";
+            mya[2] = "javascript";
+            alert(mya.join());
+        }
+        function joinie2(){
+            var mya1= new Array("86","010")
+            var mya2= ["84697581"];
+            //var mya3= mya1.concat(mya2);
+            alert(mya1.concat(mya2).join('~'));
+        }
+
+        //颠倒数组内元素顺序reverse():
+        //直接改变原数组，不创建新副本
+        function reverseie(){
+            var mya = [1,2,3,'哦','buck'];
+            alert(mya+'\n'+mya.reverse());
+        }
+
+        //选定元素slice():  与String.slice()相似
+        //返回一个新的数组，包含从 start 到 end （不包括end）的中的元素
+        //不修改原数组，创建一个新的子数组
+        //x.slice(start,end) 为负倒数，不写end，则从start到结尾
+        function sliceie(){
+            var mya = ['a','b','c','d','e','f'];
+            alert('原数组：'+mya+'\n'+'截取2,5后：'+mya.slice(2,5)+'\n'+"截取3后："+mya.slice(3)+'\n'+'截取-4后：'+mya.slice(-4)+'\n'+'截取-1,2后：'+mya.slice(-1,2));
+        }
+
+        //数组排序sort():  排序原理为：冒泡排序
+        //x.sort(sortMethod---方法函数) 
+        //方法函数，可选，必须是函数，不写则按unicode码顺序排列
+
+        function sortie1(){
+            var mya1 = ["80","16","50","6","100","1"];
+            var mya2 = ["C","y","Apple","Hi","z"];
+            alert(mya1+'无函数排序后为：'+mya1.sort()+'\n'+mya2+'无函数排序后为：'+mya2.sort());
+        }
+      
+    </script>
+</head>
+<body>
+    <button onclick="concatie1()">x.concat()数组内元素连接</button>
+    <button onclick="concatie2()">x.concat()数组连接</button><br/>
+    <button onclick="joinie1()">x.join()指定分隔符连接元素</button>
+    <button onclick="joinie2()">x.join()指定分隔符连接数组</button><br/>
+    <button onclick="reverseie()">x.reverse()颠倒元素</button><br/>
+    <button onclick="sliceie()">x.slice()截取数组内元素</button><br/>
+    <button onclick="sortie1()">x.sort()无方法函数</button><br/>
+    <script type="text/javascript">
+        function sortNum(a,b) {
+            return a - b;
+            //升序，如降序则为：“b - a”
+        }
+        var myarr = new Array("80","16","50","6","100","1");
+        document.write('原数组为：'+myarr + "<br>");
+        document.write('有函数排序后为：'+myarr.sort(sortNum));
+        //此处应可以使用嵌套函数，暂不会，留后解
+    </script>
+</body>
+</html>

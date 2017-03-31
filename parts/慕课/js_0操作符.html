@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js操作符</title>
+<script type="text/javascript">
+//多行注释
+    document.write("JS进阶篇"+"<br>");
+    alert("关注JS高级篇");
+
+     var a,b,sum;
+     var  a  = 5;
+     var  b  = 100%7;  
+     sum = a > b && a*b > 0 ;
+     document.write( "我认为 a 的值是:" + 5  + " b的值是:" + 2 + "sum 的值是:" +true+"<br/>");
+     document.write( "答案是,第一轮计算后，a 为："+ a +";b为："+b +";第一次计算sum为："+ sum +"<br/>");
+
+     sum = ( (++a) + 3 ) / (2 - (--b) ) * 3;  
+     document.write( "再一次计算后，我认为 a 的值是:" +  6  + " b的值是:" +  1 + "sum 的值是:" +  27 +"<br/>"); 
+     document.write( "答案是，第二轮计算后，a 为：" + a + ";b为：" + b +";第二次计算sum为："+ sum +",sum的类型也发生变化了。");
+// &&并且 , ||或者 , !不是
+// 操作符之间的优先级（高到低）: 乘除优先加减，除非加括号
+// 算术操作符 → 比较操作符 → 逻辑操作符 → "="赋值符号
+// 如果同级的运算是按从左到右次序进行,多层括号由里向外。
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>

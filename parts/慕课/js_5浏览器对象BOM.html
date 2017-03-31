@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_浏览器对象BOM</title>
+    <!--
+    BOM:Browser Object Model，浏览器对象模型。
+        方法          描述
+    alert()         显示带有一段消息和一个确认按钮得警告窗口
+    prompt()        显示可提示用户输入的对话框
+    cinfirm()       显示带有一段消息以及确认、取消按钮的对话框
+    open()          打开一个新的浏览器窗口or查找一个已命名的窗口
+    close()         关闭浏览器窗口
+    print()         打印当前窗口的内容
+    focus()         把键盘焦点给予一个窗口
+    blur()          把键盘焦点从顶层窗口移开
+    moveBy()        把相对窗口的当前坐标移动指定的像素
+    moveTo()        把窗口的左上角移动到一个指定的坐标
+    resizeBy()      按照指定的像素调整窗口的大小
+    resizeTo()      把窗口的大小调整到指定的宽高
+    scrollBy()      按照指定的像素值来滚动内容
+    scrollTO()      把内容滚动到指定的坐标
+    setInterval()   每隔指定的时间执行代码
+    setTimeout()    在指定的延迟时间后来执行代码
+    clearIntervall()  取消setIntervall()设置
+    clearTimeout()    取消setTimeout() 设置
+    -->
+    <script type="text/javascript">
+        //打开新窗口 open()
+        function dkxck(){
+            if (confirm('是否打开新页面？')) {
+                var url = prompt('请输入网址：','http://www.bing.com'); //网址不写http就打不开
+                window.open(url, '_blank','width=600,height=600,menubar=no,toolbar=no,scrollbars=yes');
+            }
+        }
+
+        //计时器setInterval(代码，交互时间)
+        //代码：需要调用的函数/执行的js代码
+        //交互时间：周期性执行或调用的时间间隔，以毫秒计(1s=1000ms)
+        //返回值：可传递给clearInterval()从而取消执行的值
+        function clockie(){
+            var time=new Date();
+            var attime= time.toLocaleTimeString();
+              /* time.getHours()+'时'+
+                time.getMinutes()+'分'+
+                time.getSeconds()+'秒'   ;   */
+            document.getElementById('clock').value=attime;
+        }
+        var kai = setInterval(clockie,1000);// 每隔1000毫秒调用clockie函数，并将返回值赋值给kai
+
+        //计时器setTimeout(代码，延迟时间)  只执行一次
+        //代码：需要调用的函数/执行的js代码
+        //延迟时间: 在执行代码前需等待的时间，以毫秒计(1s=1000ms)
+        function tinfo(){
+            var x = setTimeout("alert('HI')",3000);
+        }
+        
+        var num=0, guan;
+        function numcount(){
+            document.getElementById('x').value=num;
+            num++;
+            guan = setTimeout("numcount()",1000);
+            //函数内自我调用，递归
+        }
+           //setTimeout(numcount,1000) 函数外再复写一句就自动开始
+        function gnumcount(){
+            clearTimeout(guan);
+        }
+
+        //history对象： 
+        /*history对象记录了用户曾经浏览过的页面(URL)，并可以实现浏览器前进与后退相似导航的功能。
+        ps:从窗口被打开的那一刻开始记录，每个浏览器窗口、每个标签页乃至每个框架，都有自己的history对象与特定的window对象关联。
+         window.history.属性/方法 window可省略不写
+            对象属性：
+                length     返回浏览器历史列表中url的数量
+            对象方法：
+                back()      加载history列表中的前一个url
+                forward()   加载history列表中的下一个url
+                go()        加载history列表中的某个具体的页面
+                    go(-1)=back()后一页  go(0)=当前页面  go(1)=forward()前一页 */
+        function urlnum(){
+            var hl = window.history.length; //history.length;
+            alert(hl);
+        }   
+
+        function urlback(){
+            window.history.back();
+            // 等同于//window.history.go(-1); 
+        }
+
+        function urlforward(){
+            history.go(1);
+            //history.forward();
+        }
+
+        function urlgo(){
+            history.go(-2);
+        }
+
+        /* location对象  location.属性/方法
+        用于获取或设置窗体的URL，并且可以用于解析URL
+    http://www.xxx.com:8080/list.php?courseid=1&chapterid=2#mediaid=3
+        对象属性：
+            href        设置/返回完整的url
+            protocol    设置/返回当前url的 协议 http:
+            host        设置/返回主机名&当前url的端口号 www.xxx.com:8080/
+            hostname    设置/返回当前url的 主机名 www.xxx.com:
+            port        设置/返回当前url的 端口号 8080
+            pathname    设置/返回当前url的 路径 list.php
+            search      设置/返回从？开始的url(查询部分) courseid=1&chapterid=2#
+            hash        设置/返回从# 开始的url(锚) mediaid=3
+        对象方法：
+            assign()    加载新的文档
+            reload()    重新加载当前文档
+            replace()   用新的文档替换当前文档  */
+        function urlie(){
+            var x = location.href;
+            alert(x);
+        }
+
+        /* navigator对象    navigator.属性
+        包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。
+          对象属性：
+            appCodeName     浏览器代码名的字符串表示
+            appName         返回浏览器的名称
+            appVersion      返回浏览器的平台和版本信息
+            platform        返回运行浏览器的操作系统平台
+            userAgent       返回由客户机发送服务器的user-agent头部的值 */
+        function navie(){
+            var x = navigator.appCodeName;
+            var browser = navigator.appName;
+            var b_version = navigator.appVersion;
+            var sys = navigator.platform;
+            var i = navigator.userAgent;
+            alert('浏览器代码：'+x+'\n'+
+                '浏览器：'+browser+'\n'+
+                '浏览器版本：'+b_version+'\n'+
+                '系统：'+sys+'\n'+
+                'UA值：'+i);
+        }
+        function checkbrowser(){
+            var u_agent = navigator.userAgent; 
+            var B_name="Failed to identify the browser"; 
+            if(u_agent.indexOf("Firefox")>-1){ //x.indexOf(x)查找x在原句中的位置，没有则返回-1，有则返回0~正整数
+                 B_name="Firefox"; }
+            else if(u_agent.indexOf("Chrome")>-1){ 
+                B_name="Chrome"; }
+            else if(u_agent.indexOf("MSIE")>-1&&u_agent.indexOf("Trident")>-1){ 
+                B_name="IE(8-10)"; }
+            alert("浏览器："+B_name+"\n"+"u_agent："+u_agent);
+        }
+
+        //screen对象：  window.screen.属性
+        /*用于获取用户的屏幕信息
+            属性： 
+              availHeight   窗口可使用的屏幕高度，单位px
+              availWidth    窗口可使用的屏幕宽度，单位px
+              colorDepth    用户浏览器表示的颜色位数，通常为32位(每像素的位数)
+              pixelDepth    IE不支持，用户浏览器表示的颜色位数，通常为32位(每像素的位数)
+              height        屏幕的高度，单位px
+              width         屏幕的宽度，单位px     */
+        function screenie(){
+            alert( "屏幕宽度："+screen.width+'px'+'\n'+
+                "屏幕高度："+screen.height+'px'+'\n'+
+                 "可用宽度："+screen.availWidth+'px'+'\n'+
+                  "可用高度："+screen.availHeight+'px');
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="传送门" onclick="dkxck()" /><br/>
+    <input type="text" id="clock" size="50" /><button onclick="clearInterval(kai)">停</button><br/>
+    <button onclick="tinfo()">3秒后hi</button><br/>
+    <input type="txt" id="x" size="20" />
+    <button onclick="numcount()">开始计数</button>
+    <button onclick="gnumcount()">停止计数</button><br/>
+    <a href="#target1">第一个锚点</a>
+    <a name="target1"></a>
+        <a href="#target2">第二个锚点</a>
+    <a name="target2"></a>
+    <button onclick="urlnum()">访问历史总数</button>
+    <button onclick="urlback()">返回上个页面</button>
+    <button onclick="urlforward()">前往下个页面</button>
+    <button onclick="urlgo()">返回2个页面</button> <br/>
+    <button onclick="urlie()">获取当前url</button> <br/>
+    <button onclick="navie()">检测信息</button> <br/>
+    <button onclick="checkbrowser()">查询浏览器</button><br/>
+    <button onclick="screenie()">屏幕分辨路宽高</button>
+</body>
+</html>

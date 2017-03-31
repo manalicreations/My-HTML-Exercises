@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_7.1事件对象</title>
+    <script type="text/javascript" src="js_7.2事件对象_兼容函数封装.js"></script>
+    <script type="text/javascript" src="js_7.2事件对象的执行js.js"></script>
+</head>
+<body>
+<pre>◆㈢事件对象
+        what is？在触发DOM上的事件时都会产生一个对象
+        ie：哪个鼠标键点的，哪个按钮按得 ect.
+        事件对象——event
+
+    1.DOM中的事件对象  
+        ①type属性，该元素节点上的事件类型 
+        ②target属性，该事件加载在了哪个目标上
+        ③stopPropagation()方法
+            用于阻止事件冒泡。bubbles属性可查看能不能冒泡
+        ④preventDefault() 方法
+            阻止事件的默认行为
+
+    2.IE中的事件对象  (方法少 属性多)
+        ①type属性，该元素节点上的事件类型 
+        ②srcElement属性，该事件加载在了哪个目标上
+        ③cancelBubble 属性
+            用于阻止事件冒泡。true阻止 false不阻止
+            bubbles属性可查看能不能冒泡
+        ④returnValue 属性
+            阻止事件的默认行为 true不阻止 false阻止
+
+    3.兼容 DOM和IE 的事件对象：
+        此处引用了一个单独的js文件
+        兼容性js代码封装在其中
+</pre>
+<div id="box">
+    <input type="button" id="maopao" value="冒泡">
+    <input type="button" id="bumaopao" value="不冒泡">
+    <a href="http:www.bing.com" id="moren">阻止默认，不跳转bing</a>
+    <input type="button" id="leixing" value="此处加载的事件类型">
+    <input type="button" id="mubiao" value="此处事件的加载目标">   
+</div>
+
+</body>
+</html>

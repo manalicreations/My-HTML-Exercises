@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js数组</title>
+    <script type="text/javascript">
+
+        //创建数组的语法：var myarray = new Array(x); 
+        // 可以用x限制存储几个数据，x=数组的长度(length)
+        var myarray = new Array(3);
+
+        myarray[0] = 88;  // 数组里的数据是从0号开始
+        myarray[1] = 90;
+        myarray[2] = "就不告诉你";
+        //myarray[9] = 32; 可以在索引未被占用的情况下，向数组添加新元素
+
+        // 也可以写成：
+        // var myarray = new Array(88,90,"就不告诉你");
+        // var myarray = [88,90,"就不告诉你"]; ------通常这样写
+
+        document.write("第1个人的成绩："+myarray[0]+"<br/>");
+        document.write("第2个人的成绩："+myarray[1]+"<br/>");
+        document.write("第3个人的成绩："+myarray[2]+"<br/>");
+        document.write("显示当前数组长度："+myarray.length+"<br/>"); 
+        myarray.length = 10;  //增加数组的长度
+        document.write("数组长度已变更为："+myarray.length+"<br/>");  
+ 
+        // 二维数组的定义方法一:
+        // 因为js不能自己定义二维数组，因此需要用for循环定义二维数组，如下：
+        var myarr = new Array();      //先声明一维
+        for (var i = 0; i < 2; i++) {     //一维长度为2 (0,1)
+            myarr[i] = new Array();   //一维中的每一个元素都是一个数组，再声明二维
+            for (var j = 0; j < 3; j++) {   //二维长度为3 (0,1,2)
+            myarr[i][j] ="第"+i+"行"+j+"列";//赋值，每个数组元素的值为第i行j列
+            }
+        }
+        //第一维是行，第二维是列。用表格理解：[0][0]是第一行第一列
+        document.write(myarr[i][j]);
+        
+        //二维数组的定义方法二：
+        var Myarr = [[0,1,2],[1,2,3]]
+
+        var Myarr = [0][1]=5;    //将5的值传入到数组中，覆盖原有值
+        // 说明: Myarr[0][1] ,0 表示表的行，1表示表的列。
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

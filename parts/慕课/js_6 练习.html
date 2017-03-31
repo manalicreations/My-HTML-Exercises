@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_6 练习</title>
+    <script type="text/javascript">
+
+    window.onload = function(){  //打开就启动
+        highlight();
+    }
+
+    function highlight(){
+        var t = document.getElementById('table');
+        var rs = t.getElementsByTagName('tr');
+            for (var i = 1; i < rs.length; i++) { //i=1跳过表头
+                rs[i].onmouseover = function(){
+                    this.style.backgroundColor = '#f2f2f2';
+                }
+                rs[i].onmouseout = function(){
+                    this.style.backgroundColor = '#fff';
+                }
+            }
+    }
+
+    function rem(n){
+        var t = n.parentNode.parentNode.parentNode;
+        t.removeChild(n.parentNode.parentNode);
+    }
+
+    function addon(obj){
+        var a = document.getElementById('table');
+        var r = document.createElement('tr');
+
+            var c = document.createElement('td');
+            c.innerHTML = "<input type='text'/>";
+            r.appendChild(c);
+        
+            var c = document.createElement('td');
+            c.innerHTML = "<input type='text'/>";
+            r.appendChild(c);
+            
+            var c = document.createElement('td');
+            c.innerHTML = "<input type='text'/>";
+            r.appendChild(c);
+            
+            var c = document.createElement('td');
+            c.innerHTML = "<a href='javascript:' onclick='rem(this)''>DELETE</a>";
+            r.appendChild(c);
+
+        a.appendChild(r);
+        highlight(); //新加的也要变色
+    }
+    </script>
+</head>
+<body>
+<blockquote>制作一个表格，显示班级的学生信息。<br>
+
+要求：<br>
+
+1. 鼠标移到不同行上时背景色改为色值为 #f2f2f2，移开鼠标时则恢复为原背景色 #fff <br>
+
+2. 点击添加按钮，能动态在最后添加一行<br>
+
+3. 点击删除按钮，则删除当前行<br>
+</blockquote>
+<br>
+<br>
+<div>
+<table id="table" border="1" width="50%" style="text-align: center;" >
+    <tr>
+        <th>SID</th>
+        <th>Name</th>
+        <th>GENDER</th>
+        <th>OPERATION</th>
+    </tr>
+    <tr>
+        <td>111100</td>
+        <td>EMMA</td>
+        <td>female</td>
+        <td><a href="javascript:" onclick="rem(this)">DELETE</a></td>
+    </tr>
+        <td>111101</td>
+        <td>RAY</td>
+        <td>male</td>
+        <td><a href="javascript:" onclick="rem(this)">DELETE</a></td>
+    </tr>
+        <td>111102</td>
+        <td>SYA</td>
+        <td>female</td>
+        <td><a href="javascript:" onclick="rem(this)">DELETE</a></td>
+    </tr>
+</table>
+<button onclick="addon()">ADD ONE ROW</button>
+</div>
+
+
+</body>
+</html>
