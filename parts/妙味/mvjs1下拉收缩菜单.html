@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs1下拉收缩菜单</title>
+
+  <!-- JS实现原理 要弄明白
+    1.先实现布局 
+    2.实现原理 
+    3.了解JS语法 -->
+
+  <style>
+    /*
+    把某个元素移出视线让其消失():
+      1.display:none;  显示为无,不占文档流
+      2.visibility:hidden;  隐藏,东西在原处
+      3.去掉width\height
+      4.透明度
+      5.定位left\top
+      6.用白色div盖住
+      7.margin负值
+      ...12种以上??
+    */ 
+    li { list-style: none; }
+    .lis {  width: 80px; height: 30px; border: 1px solid #000000; position: relative;}
+    .lis a { display: block; line-height: 30px; text-align: center;  text-decoration: none; color: #000000; background: #f1f1f1; }
+    ul ul { padding: 0; margin: 0; width: 140px; border:  1px solid #333; position: absolute; top: 30px; left: -1px; background: #fc9; display: none;}
+    ul ul li { text-align: center; line-height: 30px;  }
+  </style>
+
+</head>
+<body>
+  <ul>
+    <!-- id和class重复,不推荐 -->
+    <li id="lis" class="lis"> 
+      <a id="link" href="">微博</a>
+      <ul id="show">
+        <li>私信</li>
+        <li>评论</li>
+        <li>@我</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+  <script>
+  /*
+  JS如何获取元素:
+    1.通过ID名称
+      documen.getElementById('Id');
+
+  事件:
+    1.鼠标: onclick, onmouseover, onmouseout, onmousemove, onmousedown, onmouseup...
+    2.键盘
+    3.系统
+    4.表单
+    5.自定义...
+
+  添加事件:
+    元素.onclick
+
+  函数: 可理解为-命令,要做什么事
+    function 名字() {
+      事儿(不会主动执行)
+    } 
+
+  变量：
+    var li = document.getElementById('lis');
+    var num = 123;
+    var str = 'baby';
+
+  执行函数: 
+    1.直接调用: abc(); 
+    2.时间调用: 元素.事件 = 函数名不带括号
+        a.onclick = abc; 
+
+  测试: 逐行加alert(); 不弹出就有毛病
+        随时写,随时测
+  */
+
+  document.getElementById('lis').onmouseover = showList;
+  document.getElementById('lis').onmouseout = showHide;
+  
+  function showList() {
+    document.getElementById('show').style.display = 'block';
+    document.getElementById('link').style.background = 'orange';
+  }
+
+  function showHide() {
+    document.getElementById('show').style.display = 'none';
+    document.getElementById('link').style.background = '#f1f1f1';
+  }
+  </script>
+</html>
