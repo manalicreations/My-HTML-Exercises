@@ -4,11 +4,6 @@
   <meta charset="UTF-8">
   <title>mvjs1下拉收缩菜单</title>
 
-  <!-- JS实现原理 要弄明白
-    1.先实现布局 
-    2.实现原理 
-    3.了解JS语法 -->
-
   <style>
     /*
     把某个元素移出视线让其消失():
@@ -28,13 +23,76 @@
     ul ul li { text-align: center; line-height: 30px;  }
   </style>
 
+  <!-- 
+    JS实现原理 要弄明白
+        1.先实现布局 
+        2.实现原理 
+        3.了解JS语法 
+    JS如何获取元素:
+      1.通过ID名称
+        documen.getElementById('Id');
+
+    事件:
+      1.鼠标: onclick, onmouseover, onmouseout, onmousemove, onmousedown, onmouseup...
+      2.键盘
+      3.系统: onload加载完以后执行……
+        window.onload = 事情
+        img.onload
+        body.onload
+        ……
+      4.表单
+      5.自定义...
+
+    添加事件:
+      元素.onclick
+
+    函数: 可理解为-命令,要做什么事
+      function 名字() {
+        事儿(不会主动执行)
+      } 
+
+      function (){}   匿名函数
+      元素.事件 = function (){};
+
+    变量：
+      var li = document.getElementById('lis');
+      var num = 123;
+      var str = 'baby';
+
+    执行函数: 
+      1.直接调用: abc(); 
+      2.时间调用: 元素.事件 = 函数名不带括号
+          a.onclick = abc; 
+
+    测试: 逐行加alert(); 不弹出就有毛病
+          随时写,随时测
+  -->
+
+  <script>
+  window.onload = function () {
+
+    var lis = document.getElementById('lis');
+    var showul = document.getElementById('showul');
+    var link = document.getElementById('link');
+
+    lis.onmouseover = function showList() {
+      showul.style.display = 'block';
+      link.style.background = 'orange';
+    };
+
+    lis.onmouseout = function () {
+      showul.style.display = 'none';
+      link.style.background = '#f1f1f1';
+    };
+  };
+  </script>
 </head>
 <body>
   <ul>
     <!-- id和class重复,不推荐 -->
     <li id="lis" class="lis"> 
       <a id="link" href="">微博</a>
-      <ul id="show">
+      <ul id="showul">
         <li>私信</li>
         <li>评论</li>
         <li>@我</li>
@@ -42,52 +100,5 @@
     </li>
   </ul>
 </body>
-  <script>
-  /*
-  JS如何获取元素:
-    1.通过ID名称
-      documen.getElementById('Id');
 
-  事件:
-    1.鼠标: onclick, onmouseover, onmouseout, onmousemove, onmousedown, onmouseup...
-    2.键盘
-    3.系统
-    4.表单
-    5.自定义...
-
-  添加事件:
-    元素.onclick
-
-  函数: 可理解为-命令,要做什么事
-    function 名字() {
-      事儿(不会主动执行)
-    } 
-
-  变量：
-    var li = document.getElementById('lis');
-    var num = 123;
-    var str = 'baby';
-
-  执行函数: 
-    1.直接调用: abc(); 
-    2.时间调用: 元素.事件 = 函数名不带括号
-        a.onclick = abc; 
-
-  测试: 逐行加alert(); 不弹出就有毛病
-        随时写,随时测
-  */
-
-  document.getElementById('lis').onmouseover = showList;
-  document.getElementById('lis').onmouseout = showHide;
-  
-  function showList() {
-    document.getElementById('show').style.display = 'block';
-    document.getElementById('link').style.background = 'orange';
-  }
-
-  function showHide() {
-    document.getElementById('show').style.display = 'none';
-    document.getElementById('link').style.background = '#f1f1f1';
-  }
-  </script>
 </html>

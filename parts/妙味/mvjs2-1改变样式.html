@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs2-1改变样式</title>
+  <style>
+    #container { width: 800px;  height: 600px; font: 16px/28px "宋体"; margin: 6% auto; position: relative;}
+    span:nth-of-type(1) { font-size:20px; font-weight: bold; margin-right: 6px;}
+    #setBtn { font-size: 14px; background: red; color: white; padding: 14px;}
+    #showBox { width: 100px; height: 100px; border: 4px solid #000; margin-top: 18px;}
+    #setBox { width: 260px; height: 200px; border: 14px solid gray; padding: 10px 20px; text-align: center; position: absolute; right: 0; top: 0; display: none;}
+
+    td { border: 1px solid gray; padding: 6px;  background: lightgray; color: gray;}
+    .category, #setRed, #setYellow, #setBlue { border: none; background: none; color: #000;}
+    #setRed { background: red; color: white;}
+    #setYellow { background: gold; color: white; }
+    #setBlue { background: blue;color: white; }
+    table { margin-bottom: 14px; }
+
+    input { padding: 4px 18px; background: darkblue; color: white; outline-color: orange;}
+
+    #setBtn, td, input { cursor: pointer; }
+    .category { cursor: default; }
+  </style>
+  <script>
+    window.onload = function () {
+      var oSetBtn = document.getElementById('setBtn');
+      var oShowBox = document.getElementById('showBox');
+      var oSetBox = document.getElementById('setBox');
+      var oSetRed = document.getElementById('setRed');
+      var oSetYellow = document.getElementById('setYellow');
+      var oSetBlue = document.getElementById('setBlue');
+      var oResetBtn = document.getElementById('resetBtn');
+      var oSubmitBtn = document.getElementById('submitBtn');
+      var oW200 = document.getElementById('w200');
+      var oW300 = document.getElementById('w300');
+      var oW400 = document.getElementById('w400');
+      var oH200 = document.getElementById('h200');
+      var oH300 = document.getElementById('h300');
+      var oH400 = document.getElementById('h400');
+      
+
+      oSetBtn.onclick = function () {
+        oSetBox.style.display = 'block';
+        hover();
+      };
+
+      oSetRed.onclick = function () {
+        oShowBox.style.background = 'red';
+      };
+      oSetYellow.onclick = function () {
+        oShowBox.style.background = 'yellow';
+      };
+      oSetBlue.onclick = function () {
+        oShowBox.style.background = 'blue';
+      };
+      oW200.onclick = function () {
+        oShowBox.style.width = 200 + 'px';
+      };
+      oW200.onmouseover = function() {
+            oW200.style.background = 'orange';
+          }; 
+      oW200.onmouseout = function() {
+            oW200.style.background = 'lightgray';
+          };    
+      oW300.onclick = function () {
+        oShowBox.style.width = 300 + 'px';
+      };
+      oW300.onmouseover = function() {
+            oW300.style.background = 'orange';
+          }; 
+      oW300.onmouseout = function() {
+            oW300.style.background = 'lightgray';
+          };
+      oW400.onclick = function () {
+        oShowBox.style.width = 400 + 'px';
+      };
+      oW400.onmouseover = function() {
+            oW400.style.background = 'orange';
+          }; 
+      oW400.onmouseout = function() {
+            oW400.style.background = 'lightgray';
+          };
+      oH200.onclick = function () {
+        oShowBox.style.height = 200 + 'px';
+      };
+      oH200.onmouseover = function() {
+            oH200.style.background = 'orange';
+          }; 
+      oH200.onmouseout = function() {
+            oH200.style.background = 'lightgray';
+          };
+      oH300.onclick = function () {
+        oShowBox.style.height = 300 + 'px';
+      };
+      oH300.onmouseover = function() {
+            oH300.style.background = 'orange';
+          }; 
+      oH300.onmouseout = function() {
+            oH300.style.background = 'lightgray';
+          };
+      oH400.onclick = function () {
+        oShowBox.style.height = 400 + 'px';
+      };
+      oH400.onmouseover = function() {
+            oH400.style.background = 'orange';
+          }; 
+      oH400.onmouseout = function() {
+            oH400.style.background = 'lightgray';
+          };
+ 
+      oResetBtn.onclick = function () {
+        oShowBox.style.width = 100 + 'px';
+        oShowBox.style.height = 100 + 'px';
+        oShowBox.style.background = 'white';
+      };
+      oSubmitBtn.onclick = function () {
+        oSetBox.style.display = 'none';
+      };
+
+    };
+
+  </script>
+</head>
+<body>
+<div id="container">
+  <span>请为下面的DIV设置样式:</span><span id="setBtn">点击设置</span>
+  <div id="showBox"></div>
+  <div id="setBox">
+    <table cellspacing="6">
+        <tr>
+          <td class="category">请选择背景色:</td>
+          <td id="setRed">红</td>
+          <td id="setYellow">黄</td>
+          <td id="setBlue">蓝</td>
+        </tr>
+        <tr>
+          <td class="category">请选择宽(px):</td>
+          <td id="w200">200</td>
+          <td id="w300">300</td>
+          <td id="w400">400</td>
+        </tr>
+        <tr>
+          <td class="category">请选择高(px):</td>
+          <td id="h200">200</td>
+          <td id="h300">300</td>
+          <td id="h400">400</td>
+        </tr>
+    </table>
+    <input id="resetBtn" type="reset" name="" value="恢复">
+    <input id="submitBtn" type="submit" name="" value="确定">
+</div>
+  
+  </div>
+
+</body>
+</html>
