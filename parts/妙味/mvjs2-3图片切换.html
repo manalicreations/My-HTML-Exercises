@@ -4,7 +4,90 @@
   <meta charset="UTF-8">
   <title>mvjs2-3图片切换</title>
 </head>
+<style>
+
+  #main { width: 400px; height: 400px; margin: 50px auto; font: 16px/24px "宋体"; padding: 10px; border: 1px solid #000; text-align: center; position: relative;}
+  input { cursor: pointer; }
+  input:nth-of-type(2) { margin-left: 20px; }
+  #brif { font-size: 18px; height: 30px; line-height: 30px; font-weight: bold; margin: 10px 0;}
+  #box {  height: 300px; border: 8px solid lightblue; position: absolute; top: calc(50% - 124px); left: calc(50% - 104px); }
+  #box p { margin: 0; width: 200px; background: #000; color: #fff; font-weight: bold; filter: alpha(opacity=50); opacity: 0.5; position: absolute;}
+  #picnum { top: calc(50% - 150px); }
+  #pictext { bottom: calc(50% - 150px); }
+  a { text-decoration: none; font-size: 40px; line-height: 40px;  width: 40px; height: 40px; position: absolute; top: calc( 50% ); background: gray; filter:alpha(opacity=20); opacity: 0.2; color: purple;}
+  a:hover { filter:alpha(opacity=90); opacity: 0.9; }
+  #prev { left: 20px; }
+  #next { right: 20px; }  
+</style>
+<script>
+  window.onload = function () {
+    var oLoop = document.getElementById("loop");
+    var oOrder = document.getElementById("order");
+    var oBrif = document.getElementById("brif");
+    var oPicNum = document.getElementById("picnum");
+    var oImgs = document.getElementById("imgs");
+    var oPicText = document.getElementById("pictext");
+    var oPrev = document.getElementById("prev");
+    var oNext = document.getElementById("next");
+    var imgsArr = ['../../imgs/mv/11/1.jpg', '../../imgs/mv/11/2.jpg', '../../imgs/mv/11/3.jpg', '../../imgs/mv/11/4.jpg', '../../imgs/mv/11/5.jpg', '../../imgs/mv/11/6.jpg'];
+    var picTextArr = ['海峡', '荷花', '海滩', '大雕', '森林', '雪山'];
+    var i = 0;
+    var onOff =true;
+
+    oBrif.innerHTML = '图片按头尾顺序展示';
+    function change() {
+      oPicNum.innerHTML = i+1 + '/' + imgsArr.length;
+      oImgs.src = imgsArr[i];
+      oPicText.innerHTML = picTextArr[i];
+    }
+
+
+    oOrder.onclick = function () {
+      onOff =true;
+      oBrif.innerHTML = '图片按头尾顺序展示';
+    };
+
+    oLoop.onclick = function () {
+      onOff =false;
+      oBrif.innerHTML = '图片左右循环展示';
+    };
+
+    oNext.onclick = function (){
+      i ++;
+      if ( i > imgsArr.length-1 ) {
+        if (onOff) {
+          i = imgsArr.length -1;
+          alert('已为最后一张');
+        } else{i = 0;}
+      }
+      change();
+    };
+
+    oPrev.onclick = function () {
+      i --;
+      if ( i < 0 )  {
+        if (onOff) {
+          i = 0;
+          alert('已为第一张');
+        } else {i = imgsArr.length-1;}
+      }
+      change();
+    };
+
+  };
+</script>
 <body>
-  
+  <div id="main">
+    <input type="button" value="顺序切换" id="order">
+    <input type="button" value="循环切换" id="loop">
+    <p id="brif"></p>
+    <div id="box" >
+      <p id="picnum">1/6</p>
+      <img src="../../imgs/mv/11/1.jpg" alt="" id="imgs">
+      <p id="pictext">海峡</p>
+    </div> 
+    <a href="#" id="prev"><</a>
+    <a href="#" id="next">></a>
+  </div>
 </body>
 </html>
