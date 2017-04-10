@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs3-1v型块</title>
+</head>
+<style>
+  div { width: 50px; height: 50px; background: blue; color: white; position: absolute; line-height: 50px; text-align: center;}
+</style>
+<script>
+  window.onload = function () {
+    var oBtn = document.getElementById('btn');
+    var oBoxes = '';
+    var aDiv = document.getElementsByTagName('div');
+    oBtn.onclick = function () {
+      for (var i = 0; i < 7; i++) {
+      oBoxes = '<div>' + i + '</div>';
+      document.body.innerHTML  += oBoxes;
+      }
+      for (var i = 0; i < aDiv.length; i++) {
+      aDiv[i].style.left = 50 + i*50 + 'px';
+      aDiv[i].style.top = -(i - 7)*50 + 'px';
+      if (i < 4) { 
+        aDiv[i].style.top = 50 + i*50 + 'px'; } 
+      if (i % 2 == 0) {
+        aDiv[i].style.backgroundColor = 'red';  
+      }
+      }
+    }; 
+  };
+
+</script>
+<body>
+  <input type="button" value="点此生成v型块" id="btn">
+</body>
+</html>
