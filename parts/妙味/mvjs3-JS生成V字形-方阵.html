@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs3-JS生成V字形-方阵</title>
+  <style>
+    #box { position: relative; }
+    li { display: block; width: 50px; height: 50px; position: absolute; top: 0; left: 0; line-height: 50px; text-align: center; color: #000; }
+  </style>
+  <script>
+    window.onload = function () {
+      var oBtnV = document.getElementById('btn1');
+      var oBtnS = document.getElementById('btn2');
+      var oBox = document.getElementById('box');
+      var aLi = document.getElementsByTagName('li');
+      var oPiece = '';
+      var aColor = ['red','yellow','blue']
+      var onOff0 = 0;
+      var onOff2 = true;
+
+      oBtnS.onclick = function () {
+        if (onOff2) {
+          //关闭此处按钮
+          onOff2 = false; 
+          //恢复box初始样式
+          oBox.innerHTML = ''; 
+          //100格
+          for (var i = 0; i < 100; i++) {
+            oPiece = '<li>' + i + '</li>';
+            oBox.innerHTML += oPiece;
+            //100格逢10换行
+            aLi[i].style.left = (i%10)*50 + 'px';
+            aLi[i].style.top = parseInt(i/10)*50 + 'px';
+          }
+          //100格上色
+          for (var i = 0; i < 100; i+=3) {
+            for (var j = 0; j < aColor.length; j++) {
+              aLi[i+j].style.background = aColor[j];
+            }
+          } 
+        } 
+      };
+
+      function vU() {
+        oBox.innerHTML = '';
+        for (var i = 0; i < 7; i++) {
+          oPiece = '<li>' + i + '</li>';
+          oBox.innerHTML += oPiece;
+          aLi[i].style.left = i*50 + 'px';
+          aLi[i].style.top = i*50 + 'px';
+          if (i > 3) {
+            aLi[i].style.top = (6 - i)*50 + 'px';
+          }
+        }
+      };
+
+      function vD () {
+        oBox.innerHTML = '';
+        for (var i = 0; i < 7; i++) {
+          oPiece = '<li>' + i + '</li>';
+          oBox.innerHTML += oPiece;
+          aLi[i].style.left = i*50 + 'px';
+          aLi[i].style.top = (6 - i)*50 + 'px';
+          if (i > 3) {
+            aLi[i].style.top = i*50 + 'px';
+          }
+        }
+      };
+
+      function vR () {
+        oBox.innerHTML = '';
+        for (var i = 0; i < 7; i++) {
+          oPiece = '<li>' + i + '</li>';
+          oBox.innerHTML += oPiece;
+          aLi[i].style.left = (6 - i)*50 + 'px';
+          aLi[i].style.top = i*50 + 'px';
+          if (i > 3) {
+            aLi[i].style.left = i*50 + 'px';
+          }
+        }
+      };
+
+      function vL () {
+        oBox.innerHTML = '';
+        for (var i = 0; i < 7; i++) {
+          oPiece = '<li>' + i + '</li>';
+          oBox.innerHTML += oPiece;
+          aLi[i].style.left = i*50 + 'px';
+          aLi[i].style.top = i*50 + 'px';
+          if (i > 3) {
+            aLi[i].style.left = (6 - i)*50 + 'px';
+          }
+        }
+      };
+
+      oBtnV.onclick = function () {
+        //打开隔壁开关
+        onOff2 = true;
+        if (onOff0 == 0) {
+         //正V 
+         vU();
+        }
+        if (onOff0 == 1) {
+          //右
+          vR();
+        }
+        if (onOff0 == 2) {
+          //反V
+          vD();
+        }
+        if (onOff0 == 3) {
+          //左V
+          vL();
+        }
+        //连续点击循环
+        onOff0 ++;
+        if (onOff0 == 4) {
+          onOff0 = 0;
+        }
+
+        //上色
+        for (var i = 0; i < aLi.length; i+=3) {
+          for (var j = 0; j < aColor.length; j++) {
+            aLi[i+j].style.background = aColor[j];
+          }
+        }
+      };
+
+    };
+
+  </script>
+</head>
+<body>
+  <input id="btn1" type="button"  value="v型连点变换">
+  <input id="btn2" type="button" value="方阵">
+  <ul id="box">
+
+  </ul>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs3-1触发this</title>
+  <style>
+    #main { width: 730px; height: 342px; margin: 30px auto; padding: 0 0 0 8px; background: #fff; position: relative;}
+    p {  width: 510px; height: 26px; line-height: 26px; font-size: 12px; font-weight: bold; border-bottom: 1px solid gray; position: absolute; top: 92px; margin: 0;}
+    #box { width: 490px; height: 200px; padding: 0 20px; position: absolute; top: 124px; left: 8px;}
+    li { width: 56px; height: 82px; list-style: none; background: url(../../imgs/mv/mvjs3/libg.jpg); float: left; margin: 0 24px 8px 0; position: relative; cursor: pointer;}
+    li div { width: 230px; height: 148px; background: url(../../imgs/mv/mvjs3/popupbg.png); position: absolute; top:-124px; left: 20px; display: none;} 
+  </style>
+<script src="../兼容性/js/DD_belatedPNG_0.0.8a.js"></script>
+  <script>
+    DD_belatedPNG.fix("img, div");
+    window.onload = function () {
+      var oMain = document.getElementById('main');
+      var oBox = document.getElementById('box');
+      var aLi = document.getElementsByTagName('li');
+      for (var i = 0; i < aLi.length; i++) {
+        aLi[i].onmouseover = function () {
+          this.getElementsByTagName('div')[0].style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function () {
+          this.getElementsByTagName('div')[0].style.display = 'none';
+        };
+      }
+      
+      
+    };
+  </script>
+</head>
+<body>
+  <div id="main">
+  <p>最新上线</p>
+    <ul id="box">
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+      <li>
+        <div></div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

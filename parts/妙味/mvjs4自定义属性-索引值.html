@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs4自定义属性-索引值</title>
+</head>
+<style>
+  body { background: #999; }
+  #box { width: 300px; height: 300px;   margin: 0 auto; position: relative;}
+  #box img { width: 200px; height: 300px; left: 0; }
+  #box span, #box p { width: 200px; height: 30px; line-height: 30px; color: #fff; text-align: center; background: #333; position: absolute;}
+  #box span { top: 0; left: 0;}
+  #box p { bottom: 0; margin: 0; }
+  #box ul { padding: 0; margin: 0; width: 40px; position: absolute; top: 20px; left: 210px; }
+  li { list-style: none; width: 40px; height: 40px; line-height: 40px; text-align: center; margin-bottom: 4px; float: left; background: #222; }
+  .active { background: #fdcb02; }
+
+</style>
+
+<script>
+window.onload = function () {
+  var oBox = document.getElementById('box');
+  var oImg = oBox.getElementsByTagName('img')[0];
+  var oSpan = oBox.getElementsByTagName('span')[0];
+  var oP = oBox.getElementsByTagName('p')[0];
+  var oUl = oBox.getElementsByTagName('ul')[0];
+  var aLi = oUl.getElementsByTagName('li');
+
+  var aPic = ['../../imgs/mv/11/1.jpg', '../../imgs/mv/11/2.jpg', '../../imgs/mv/11/3.jpg', '../../imgs/mv/11/4.jpg', '../../imgs/mv/11/5.jpg', '../../imgs/mv/11/6.jpg']
+  var aText = ['海峡', '荷花', '海边', '大鸟', '森林', '雪山']
+  var num = 0;
+    //让li变active 方法2
+  //var oldLi = null;
+
+//根据图片数量生成li
+    for (var i = 0; i < aPic.length; i++) {
+    var oLi = '<li>' + '</li>';
+    oUl.innerHTML += oLi;
+    }
+    //oldLi = aLi[num];
+//封装初始化内容
+  function choseLi() {
+  oImg.src = aPic[num];
+  oSpan.innerHTML = 1+num+'/'+aPic.length;
+  oP.innerHTML = aText[num];
+  for (var i = 0; i < aLi.length; i++) {
+        aLi[i].className = '';
+      }
+  //this.className = 'active';
+
+  aLi[num].className = 'active';
+  }
+//调用 初始化
+  choseLi();
+  
+//实现效果
+  for (var i = 0; i < aLi.length; i++) {
+    aLi[i].index = i; //索引值
+    aLi[i].onclick =function () {
+      num = this.index;
+      choseLi();
+
+      /*
+      oImg.src = aPic[this.index];
+      oSpan.innerHTML = 1+this.index + '/' + aPic.length;
+      oP.innerHTML = aText[this.index];
+      //让li变active:(2个方法: 全清/清除之前一个)
+      for (var i = 0; i < aLi.length; i++) {
+        aLi[i].className = '';
+      }
+      //this.className = 'active';
+      aLi[num].className = 'active';
+      // oldLi.className = '';
+      // oldLi = this;
+      // this.className = 'active';
+      */
+    };
+  }
+
+};
+</script>
+<body>
+  <div id="box">
+    <img src="" alt="">
+    <span></span>
+    <p></p>
+    <ul></ul>
+  </div>
+</body>
+</html>
