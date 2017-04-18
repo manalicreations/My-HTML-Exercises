@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs4-2图片切换with缩略图</title>
+</head>
+<style>
+  ul, li { margin: 0; padding: 0; }
+  li { list-style: none; }
+  .clearfix { *zoom: 1; }
+  .clearfix:after { content: ''; display: block; clear: both; }
+  #box { width: 650px; height: 550px; margin: 0 auto; background: url(../../imgs/mv/mvjs4/boxbg.jpg) no-repeat; text-align: center; overflow: hidden; position: relative;}
+  #box h2 { margin: 10px 0; color: #ff8040; height: 30px; line-height: 30px;}
+  #imgs { width: 600px; height: 450px;  }
+  #box span { width: 50px; height: 50px; line-height: 50px; font-size: 38px; font-weight: bold; color: #fff; border-radius: 25px; background: #ff8040; position: absolute; top: 250px; opacity: 0.5; filter: alpha(opacity=50); cursor: pointer;}
+  #prev { left: 25px; }
+  #next { right: 25px; }
+  #box ul { height: 30px; position: relative; left: 50%; float: left; margin-top: 6px; }
+  #box li { width: 20px; height: 20px; border-radius: 10px; background: gray; margin: 10px; float: left; position: relative; right: 50%; top: -4px; cursor: pointer; }
+  #box .active { background: #ff8040; opacity: 1; filter: alpha(opacity=100);}
+  .bubble { width: 100px; height: 70px; background: #ff8040; padding: 2px; position: absolute; bottom: 20px; left: -38px; margin-bottom: 15px; display: none;}
+
+  .smallpic { width: 100px; height: 70px; }
+  #box .bubbledown { width: 0; height: 0;  font-size: 0; border-width: 15px; border-style: solid; border-color: #ff8040 transparent transparent; overflow: hidden; position: absolute; bottom: -29px; left: 35px;}
+</style>
+
+<script>
+window.onload = function () {
+  var oImgs = document.getElementById('imgs');
+  var oPrev = document.getElementById('prev');
+  var oNext = document.getElementById('next');
+  var oUl = document.getElementById('dots');
+  var oLi = '<li>' + '<div class="bubble">' + '<b class="bubbledown">' + '</b>' + '<img src="" alt="" class="smallpic">' + '</div>' + '</li>';
+  var aLi = document.getElementsByTagName('li');
+  var aBubble = oUl.getElementsByTagName('div');
+  var aImgs = oUl.getElementsByTagName('img');
+  var aPic = ['../../imgs/mv/mvjs4/1.jpg','../../imgs/mv/mvjs4/2.jpg','../../imgs/mv/mvjs4/3.jpg','../../imgs/mv/mvjs4/4.jpg','../../imgs/mv/mvjs4/5.jpg'];
+  var num = 0;
+
+//根据图片数量生成li及其内部元素
+  for (var i = 0; i < aPic.length; i++) {
+    oUl.innerHTML += oLi;  
+  }
+
+//初始化/封装
+  function liClick() {
+    oImgs.src = aPic[num];
+    for (var i = 0; i < aLi.length; i++) {
+      aLi[i].className = '';
+    }
+    aLi[num].className = 'active';
+  }
+
+  function liMouse() {
+    aImgs[num].src = aPic[num];
+    for (var i = 0; i < aBubble.length; i++) {
+      aBubble[i].style.display = 'none';
+    }
+  }
+
+//调用初始化
+  liClick();
+  liMouse();
+  
+//li鼠标划过/点击事件
+  for (var i = 0; i < aLi.length; i++) {
+    aLi[i].index = i;
+    aLi[i].onmouseover = function () {
+      num = this.index;
+      liMouse();
+      aBubble[num].style.display = 'block';
+    };
+
+    aLi[i].onmouseout = function () {
+      liMouse();
+    };
+
+    aLi[i].onclick = function () {
+      liClick();
+    };
+  }
+
+//前后页点击事件/联动li
+  
+
+};
+</script>
+<body>
+  <div id="box">
+    <h2>图片切换with缩略图</h2>
+    <img src="" alt="" id="imgs">
+    <span id="prev"><</span>
+    <span id="next">></span>
+    <ul id="dots" class="clearfix"></ul>
+  </div>
+</body>
+</html>

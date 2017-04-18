@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs4-1QQ列表的折叠与展开</title>
+  <style>
+    ul,h2 { margin: 0; padding: 0; }
+    li { list-style: none; }
+
+    #list { width: 240px; border: 1px solid #333; margin: 0 auto;}
+    #list .lis {  }
+    #list h2 { height: 30px; line-height: 30px; text-indent: 20px; background: url(../../imgs/mv/mvjs4/ico1.gif) no-repeat 5px center #6ff; cursor: pointer;}
+    #list .activeH2 { background: url(../../imgs/mv/mvjs4/ico2.gif) no-repeat 5px center #ff9; color: #000;}
+    #list ul { display: none; }
+    #list ul li { line-height: 24px; border-bottom: 1px solid #333; text-indent: 24px; cursor: pointer;}
+    #list ul .activeLi { background: #6ff; }
+  </style>
+
+  <script>
+    window.onload = function () {
+      var oList = document.getElementById('list');
+      var aH2 = oList.getElementsByTagName('h2');
+      var aUl = oList.getElementsByTagName('ul');
+      var aLi = null;
+      var arrLi = [];
+
+      //找到所有h2
+      for (var i = 0; i < aH2.length; i++) {
+        aH2[i].index = i;
+        //给h2添加点击事件
+        aH2[i].onclick = function () {
+          //除当前列表外的其他列表折叠
+          for (var i = 0; i < aH2.length; i++) {
+            if (i != this.index) {
+              aH2[i].className = '';
+              aUl[i].style.display = 'none';
+            }
+          }
+          //展开/折叠h2
+          if (this.className == '') {
+            aUl[this.index].style.display = 'block';
+          this.className = 'activeH2';
+          } else {
+            aUl[this.index].style.display = 'none';
+          this.className = '';
+        }
+
+        };
+      }
+
+      //找到要点击效果的所有li,并存储
+      for (var i = 0; i < aUl.length; i++) {
+        aLi = aUl[i].getElementsByTagName('li');
+        for (var j = 0; j < aLi.length; j++) {
+          arrLi.push(aLi[j]);
+        }
+      }
+
+      //给li添加点击事件   
+      for (var i = 0; i < arrLi.length; i++) {
+        arrLi[i].onclick = function () {
+          for (var i = 0; i < arrLi.length; i++) {
+            //选中/取消
+            arrLi[i].className = '';
+            this.className = 'activeLi';
+          }
+          
+
+        };
+      }
+
+    };
+  </script>
+</head>
+<body>
+  <ul id="list">
+    <li class="lis">
+      <h2>我的好友</h2>
+      <ul>
+        <li>张三</li>
+        <li>张三</li>
+        <li>张三</li>
+        <li>张三</li>
+      </ul>
+    </li>
+    <li class="lis">
+      <h2>企业好友</h2>
+      <ul>
+        <li>李四</li>
+        <li>李四</li>
+        <li>李四</li>
+        <li>李四</li>
+      </ul>
+    </li>
+    <li class="lis">
+      <h2>黑名单</h2>
+      <ul>
+        <li>二蛋</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
