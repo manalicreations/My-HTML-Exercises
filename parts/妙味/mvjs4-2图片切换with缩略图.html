@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>mvjs4-2图片切换with缩略图</title>
-</head>
+</head> 
 <style>
   ul, li { margin: 0; padding: 0; }
   li { list-style: none; }
@@ -36,9 +36,10 @@ window.onload = function () {
   var aImgs = oUl.getElementsByTagName('img');
   var aPic = ['../../imgs/mv/mvjs4/1.jpg','../../imgs/mv/mvjs4/2.jpg','../../imgs/mv/mvjs4/3.jpg','../../imgs/mv/mvjs4/4.jpg','../../imgs/mv/mvjs4/5.jpg'];
   var num = 0;
+  var i = 0;
 
 //根据图片数量生成li及其内部元素
-  for (var i = 0; i < aPic.length; i++) {
+  for (i = 0; i < aPic.length; i++) {
     oUl.innerHTML += oLi;  
   }
 
@@ -63,7 +64,7 @@ window.onload = function () {
   liMouse();
   
 //li鼠标划过/点击事件
-  for (var i = 0; i < aLi.length; i++) {
+  for (i = 0; i < aLi.length; i++) {
     aLi[i].index = i;
     aLi[i].onmouseover = function () {
       num = this.index;
@@ -81,7 +82,21 @@ window.onload = function () {
   }
 
 //前后页点击事件/联动li
-  
+  oNext.onclick = function () {
+    num ++;
+    if (num > aPic.length - 1) {
+      num = 0;
+    }
+    liClick();
+  };
+
+  oPrev.onclick = function () {
+    num --;
+    if (num < 0) {
+      num = aPic.length - 1;
+    }
+    liClick();
+  };
 
 };
 </script>
