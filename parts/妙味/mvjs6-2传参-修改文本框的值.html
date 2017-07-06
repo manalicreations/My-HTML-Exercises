@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs6-2传参-修改文本框的值</title>
+  <style type="text/css">
+    ul,li,p { margin: 0; padding: 0; list-style: none; }
+    div { width: 600px;  margin: 0 auto; font-size: 16px; line-height: 34px; text-indent: 2em;}
+    ul>p { margin:0; background: green; color: white; font-weight: bold;}
+    li:nth-of-type(1) { border-bottom: 1px solid green; }
+    button:nth-of-type(1) { font-weight: bold;}
+    .edit { display: none; }
+  </style>
+
+  <script>
+    window.onload = function() {
+      var oUl = document.getElementById("list");
+      var aLi = oUl.getElementsByTagName("li");
+
+      for (var i = 0; i < aLi.length; i++) {
+        edition(aLi[i]);
+      }
+
+      function edition (aLi) {
+        var aView = aLi.getElementsByClassName('view');
+        var oText = aLi.getElementsByTagName('span')[0];
+        var oEbtn = aLi.getElementsByTagName('button')[0];
+
+        var aEdit = aLi.getElementsByClassName('edit');
+        var oInput = aLi.getElementsByTagName("input")[0];
+        var oSbtn = aLi.getElementsByTagName("button")[1];
+        var oCbtn = aLi.getElementsByTagName("button")[2];
+        
+        // for (var i = 0; i < aView.length; i++) {
+        //   aView[i].style.display = "inline";
+        // }
+        // for (var j = 0; j < aEdit.length; j++) {
+        //   aEdit[j].style.display = "none";
+        // }
+        oEbtn.onmouseover = function () {
+          oEbtn.style.cursor = "pointer";
+        };
+        oEbtn.onclick = function () {
+          for (var i = 0; i < aView.length; i++) {
+            aView[i].style.display = "none";
+          }
+          for (var j = 0; j < aEdit.length; j++) {
+            aEdit[j].style.display = "inline";
+          }
+        };
+
+        oSbtn.onmouseover = function () {
+          oSbtn.style.cursor = "pointer";
+          oSbtn.style.backgroundColor = "green";
+          oSbtn.style.color = "white";
+        };
+        oSbtn.onmouseout = function () {
+          oSbtn.style.backgroundColor = "";  
+          oSbtn.style.color = "black";      
+        };
+        oSbtn.onclick = function () {
+          oText.innerHTML = oInput.value;
+          for (var i = 0; i < aView.length; i++) {
+            aView[i].style.display = "inline";
+          }
+          for (var j = 0; j < aEdit.length; j++) {
+            aEdit[j].style.display = "none";
+          }
+        };
+
+        oCbtn.onmouseover = function () {
+          oCbtn.style.cursor = "pointer";
+          oCbtn.style.backgroundColor = "green";
+          oCbtn.style.color = "white";
+        };
+        oCbtn.onmouseout = function () {
+          oCbtn.style.backgroundColor = "";  
+          oCbtn.style.color = "black";      
+        };
+        oCbtn.onclick = function () {
+          for (var i = 0; i < aView.length; i++) {
+            aView[i].style.display = "inline";
+          }
+          for (var j = 0; j < aEdit.length; j++) {
+            aEdit[j].style.display = "none";
+          }
+        };
+      }
+
+    };
+
+  </script>         
+</head>
+<body>
+  <div>
+    <ul id="list">
+      <p>分类名称</p>
+      <li>
+        <span class="view">请输入文字</span>
+        <button class="view" type="" title="点击编辑">&#128393;</button>
+        <input class="edit" type="text" name="" value="">
+        <button class="edit" type="">保存</button>
+        <button class="edit" type="">取消</button>
+      </li>
+      <li>
+        <span class="view">请输入文字</span>
+        <button class="view" type="" title="点击编辑">&#128393;</button>
+        <input class="edit" type="text" name="" value="">
+        <button class="edit" type="">保存</button>
+        <button class="edit" type="">取消</button>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

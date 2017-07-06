@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>无标题文档</title>
+<title>mvjs5数据类型和转换</title>
 
 <script>
 
@@ -26,6 +26,7 @@ function num() {
   }
   return aResult;
 }
+alert(num());
 
 //找到所有可以转换为数字的:
 function toNum() {
@@ -37,6 +38,7 @@ function toNum() {
   }
   return aResult;
 }
+alert(toNum());
 
 //最大数字:
 function maxNum() {
@@ -46,8 +48,9 @@ function maxNum() {
     tmp2.push(parseFloat(tmp1[i]));
   }
   return Math.max.apply(Math,tmp2);
-  //return Math.max.apply(Math,tmp2); 最小
+  //return Math.min.apply(Math,tmp2); 最小
 }
+alert(maxNum());
 
 //找出NaN所在位置:
 function locateNaN() {
@@ -60,6 +63,7 @@ function locateNaN() {
   }
   return aResult;
 }
+alert(locateNaN());
 </script>
 
 </head>
