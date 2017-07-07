@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mvjs6-3传参-热播列表展示</title>
+  <style>
+    ul,li,p { margin: 0; padding: 0; list-style: none; font:10px/24px Microsoft YaHei; }
+    
+    #content { width: 260px; height: 390px; margin: 0 auto; border: 1px solid #000; background: #e1f0f0;}
+
+    #head { width: 230px; margin: 0 auto; border-bottom: 1px solid #88c7ff;} 
+    strong { color: #408080; font: bold 16px/34px SimSun; padding-left: 18px;} 
+    #timetag { overflow: hidden; text-align: right; float: right; color: #408080; border: 1px solid #88c7ff; border-bottom: none; margin-top: 9px;}
+    #timetag li { float: left; width: 36px; text-align: center;}
+    #timetag li:nth-of-type(2) { border-right: 1px solid #88c7ff; border-left: 1px solid #88c7ff; }
+
+    .list { width: 230px; margin: 0 auto; } 
+    .list li { padding-left:32px; border-bottom: 1px dashed white; position: relative; background: url(../../imgs/mv/mvjs6/1.gif) no-repeat 8px 6px white; width:198px; height: 74px;}
+    
+    .view { width: 200px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }/*超出显示省略号*/
+
+    .view { display: none; }
+    .list li a:nth-of-type(1) { display: inline-block; width:82px; height: 62px; border: 1px solid #88c7ff; padding-top: 2px; padding-left: 2px; position: absolute; top:4px; }
+    .list li span:nth-of-type(1) { position: absolute; left: 124px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box;  -webkit-box-orient: vertical;  -webkit-line-clamp:2;}
+    .list li a:nth-of-type(2) { display: inline-block; position: absolute; left: 182px; top: 48px;}
+
+  </style>
+</head>
+<body>
+  <div id="content">
+    <div id="head">
+      <strong>观看排行榜</strong>
+      <ul id="timetag">
+        <li>每日</li>
+        <li>每周</li>
+        <li>全部</li>
+      </ul>
+    </div>
+    <ul class="list" id="daylist">
+      <li>
+        <p class="view">档案:收藏在案的秘密收藏在案的秘密收藏在案的秘密收藏在案的秘密</p>
+        <a class="card" href=""><img src="../../imgs/mv/mvjs6/dayimg.jpg" alt=""></a>
+        <span class="card">档案:收藏在案的秘密收藏在案的秘密收藏在案的秘密收藏在案的秘密</span>
+        <a class="card" href=""><img src="../../imgs/mv/mvjs6/play.gif"></a>
+      </li>
+      
+      <li>更多&gt;&gt;</li>
+    </ul>
+  </div>
+</body>
+</html>
