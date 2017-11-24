@@ -1,0 +1,17 @@
+.navbar-brand {
+  width: 50px;
+  background-image: url(../img/redman.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75%;
+}
+
+.side-bar .list-group-item {
+  border: none; 
+  border-radius: 3px; 
+  margin-bottom: 5px;
+}
+
+.side-bar .list-group-item.active {
+  background-color: #d91800;
+}

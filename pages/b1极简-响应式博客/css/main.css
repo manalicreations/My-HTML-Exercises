@@ -1,4 +1,7 @@
-
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 body {
   background: #454545;
   line-height: 1.7;
@@ -39,6 +42,9 @@ a, body {
 
 .side-bar .nav a {
   font-weight: 700;
+}
+#menu-cb, #menu-toggle {
+  display: none;
 }
 
 .main {
