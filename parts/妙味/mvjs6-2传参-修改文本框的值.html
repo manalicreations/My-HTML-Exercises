@@ -7,40 +7,30 @@
     ul,li,p { margin: 0; padding: 0; list-style: none; }
     div { width: 600px;  margin: 0 auto; font-size: 16px; line-height: 34px; text-indent: 2em;}
     ul>p { margin:0; background: green; color: white; font-weight: bold;}
-    li:nth-of-type(1) { border-bottom: 1px solid green; }
-    button:nth-of-type(1) { font-weight: bold;}
+    #li1 { border-bottom: 1px solid green; }
+    li>button:nth-of-type(1) { font-weight: bold;}
     .edit { display: none; }
   </style>
-
+    
   <script>
-    window.onload = function() {
-      var oUl = document.getElementById("list");
-      var aLi = oUl.getElementsByTagName("li");
+    window.onload = function(){
+      edit("li1");
+      edit("li2");
+    };
 
-      for (var i = 0; i < aLi.length; i++) {
-        edition(aLi[i]);
-      }
+    function edit(id){
+      var oLi = document.getElementById(id);
 
-      function edition (aLi) {
-        var aView = aLi.getElementsByClassName('view');
-        var oText = aLi.getElementsByTagName('span')[0];
-        var oEbtn = aLi.getElementsByTagName('button')[0];
+      var aView = oLi.getElementsByClassName("view");
+      var oInput = oLi.getElementsByTagName("input")[0];
+      var oEbtn = oLi.getElementsByTagName("button")[0];
 
-        var aEdit = aLi.getElementsByClassName('edit');
-        var oInput = aLi.getElementsByTagName("input")[0];
-        var oSbtn = aLi.getElementsByTagName("button")[1];
-        var oCbtn = aLi.getElementsByTagName("button")[2];
-        
-        // for (var i = 0; i < aView.length; i++) {
-        //   aView[i].style.display = "inline";
-        // }
-        // for (var j = 0; j < aEdit.length; j++) {
-        //   aEdit[j].style.display = "none";
-        // }
-        oEbtn.onmouseover = function () {
-          oEbtn.style.cursor = "pointer";
-        };
-        oEbtn.onclick = function () {
+      var aEdit = oLi.getElementsByClassName("edit");
+      var oText = oLi.getElementsByTagName("span")[0];
+      var oSbtn = oLi.getElementsByTagName("button")[1];
+      var oCbtn = oLi.getElementsByTagName("button")[2];
+
+      function openEdite() {
           for (var i = 0; i < aView.length; i++) {
             aView[i].style.display = "none";
           }
@@ -49,17 +39,19 @@
           }
         };
 
-        oSbtn.onmouseover = function () {
-          oSbtn.style.cursor = "pointer";
-          oSbtn.style.backgroundColor = "green";
-          oSbtn.style.color = "white";
+        function btnNormal(){
+          this.style.backgroundColor = "";  
+          this.style.color = "black";  
         };
-        oSbtn.onmouseout = function () {
-          oSbtn.style.backgroundColor = "";  
-          oSbtn.style.color = "black";      
+
+        function btnActive(){
+          this.style.backgroundColor = "green";
+          this.style.cursor = "pointer";
+          this.style.color = "white";
         };
-        oSbtn.onclick = function () {
-          oText.innerHTML = oInput.value;
+
+        function closeEdite() {
+          // oText.innerHTML = oInput.value;
           for (var i = 0; i < aView.length; i++) {
             aView[i].style.display = "inline";
           }
@@ -68,41 +60,33 @@
           }
         };
 
-        oCbtn.onmouseover = function () {
-          oCbtn.style.cursor = "pointer";
-          oCbtn.style.backgroundColor = "green";
-          oCbtn.style.color = "white";
-        };
-        oCbtn.onmouseout = function () {
-          oCbtn.style.backgroundColor = "";  
-          oCbtn.style.color = "black";      
-        };
-        oCbtn.onclick = function () {
-          for (var i = 0; i < aView.length; i++) {
-            aView[i].style.display = "inline";
-          }
-          for (var j = 0; j < aEdit.length; j++) {
-            aEdit[j].style.display = "none";
-          }
-        };
-      }
+        oEbtn.onmouseover = btnActive;
+        oEbtn.onmouseout = btnNormal;
+        oEbtn.onclick = openEdite;
 
+        oSbtn.onmouseover = btnActive;
+        oSbtn.onmouseout = btnNormal;
+        oSbtn.onclick = function(){oText.innerHTML = oInput.value;closeEdite();};
+
+        oCbtn.onmouseover = btnActive;
+        oCbtn.onmouseout = btnNormal;
+        oCbtn.onclick = closeEdite;
+      
     };
-
-  </script>         
+  </script>
 </head>
 <body>
   <div>
     <ul id="list">
       <p>分类名称</p>
-      <li>
+      <li id="li1">
         <span class="view">请输入文字</span>
         <button class="view" type="" title="点击编辑">&#128393;</button>
         <input class="edit" type="text" name="" value="">
         <button class="edit" type="">保存</button>
         <button class="edit" type="">取消</button>
       </li>
-      <li>
+      <li id="li2">
         <span class="view">请输入文字</span>
         <button class="view" type="" title="点击编辑">&#128393;</button>
         <input class="edit" type="text" name="" value="">
