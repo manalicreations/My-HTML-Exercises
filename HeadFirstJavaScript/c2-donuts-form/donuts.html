@@ -1,0 +1,97 @@
+<html>
+
+<head>
+  <title>Duncan's Just-In-Time Donuts</title>
+
+  <link rel="stylesheet" type="text/css" href="donuts.css" />
+
+  <script type="text/javascript">
+    function updateOrder() {
+      const TAXRATE = 0.0925;   // const 常量大写以示区别
+      const DONUTPRICE = 0.50; // const常量必须赋值！不然就NaN
+      var numCakeDonuts = parseDonuts(document.getElementById("cakedonuts").value);
+      var numGlazedDonuts = parseDonuts(document.getElementById("glazeddonuts").value);
+      if (isNaN(numCakeDonuts)) //isNaN()布尔值，ture不是数字，fails是数字
+        numCakeDonuts = 0;
+      if (isNaN(numGlazedDonuts))
+        numGlazedDonuts = 0;
+      var subTotal = (numCakeDonuts + numGlazedDonuts) * DONUTPRICE;
+      var tax = subTotal * TAXRATE;
+      var total = subTotal + tax;
+      document.getElementById("subtotal").value = "$" + subTotal.toFixed(2);
+      //toFixed（num）保留该数字小数点后num位
+      document.getElementById("tax").value = "$" + tax.toFixed(2);
+      document.getElementById("total").value = "$" + total.toFixed(2);
+    }
+
+    function parseDonuts(donutString) {
+      numDonuts = parseInt(donutString);
+      if (donutString.indexOf("dozen") != -1)
+        //stringObject.indexOf(xxx)查找该字符串内是否含有xxx，并返回xxx所在位置的检索值，对大小写敏感。没有xxx时返回-1
+        numDonuts *= 12;
+      return numDonuts;
+    }
+
+    function placeOrder(form) {
+      if (document.getElementById("name").value == "")
+        alert("I'm sorry but you must provide your name before submitting an order.");
+      else if (document.getElementById("pickupminutes").value == "" ||
+        isNaN(document.getElementById("pickupminutes").value))
+        alert("I'm sorry but you must provide the number of minutes until pick-up before submitting an order.");
+      else
+        // Submit the order to the server
+        form.submit(); //表单提交
+    }
+  </script>
+</head>
+
+<body>
+  <div id="frame">
+    <div class="heading">Duncan's Just-In-Time Donuts</div>
+    <div class="subheading">All donuts 50 cents each, cake or glazed!</div>
+    <div id="left"> 
+      <img src="donuttime.png" alt="Just-In-Time Donuts" />
+    </div>
+    <form name="orderform" action="donuts.php" method="POST">
+      <div class="field">
+        <label for="name">Name: </label>
+        <!-- #1--lable 使用for属性=相应的input的id。form属性=其所属form的id，如引用多个表单，使用空格分隔。 -->
+        <input type="text" id="name" name="name" value="" />
+      </div>
+      <div class="field">
+        <label> # of cake donuts:
+          <input type="text" id="cakedonuts" name="cakedonuts" value="" onchange="updateOrder();" />
+        </label>
+        <!-- #2--把要绑定的元素直接放在lable标签内 -->
+      </div>
+      <div class="field">
+        # of glazed donuts:
+        <input type="text" id="glazeddonuts" name="glazeddonuts" value="" onchange="updateOrder();" />
+      </div>
+      <div class="field">
+        Minutes 'til pickup:
+        <input type="text" id="pickupminutes" name="pickupminutes" value="" />
+      </div>
+      <div class="field">
+        Subtotal:
+        <input type="text" id="subtotal" name="subtotal" value="" readonly="readonly" />
+        <!--readonly只读字段不能在页面上被用户修改的。仍然可以使用 tab 键切换到该字段，还可以选中或拷贝其文本。 -->
+      </div>
+      <div class="field">
+        Tax:
+        <input type="text" id="tax" name="tax" value="" readonly="readonly" />
+      </div>
+      <div class="field">
+        Total:
+        <input type="text" id="total" name="total" value="" readonly="readonly" />
+      </div>
+      <div class="field">
+        <input type="button" value="Place Order" onclick="placeOrder(this.form);
+         " />  
+         <!--this.form 是一个参数 -->
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

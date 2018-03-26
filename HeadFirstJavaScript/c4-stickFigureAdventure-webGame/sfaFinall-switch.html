@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Stick Figure Adventure</title>
+
+    <script type="text/javascript">
+      // Initialize the current scene to Scene 0 (Intro)
+      var curScene = 0;
+      //全局变量
+      //尽量使用局部变量
+
+      function changeScene(decision) {
+        //函数的参数=初始化的局部变量
+        // Clear the scene message
+        var message = "";
+        //局部变量swi
+
+        switch (curScene) {
+        //switch的参数只能是单纯数据，不能是表达式
+        // 没有案例匹配时请加default案例
+        case 0:
+          curScene = 1;
+          message = "Your journey begins at a fork in the road.";
+          break;
+        //每个匹配结尾都应用break打断
+        case 1:
+          if (decision == 1) {
+            curScene = 2;
+            message = "You have arrived at a cute little house in the woods.";
+          }
+          else {
+            curScene = 3;
+            message = "You are standing on the bridge overlooking a peaceful stream.";
+          }
+          break;
+        case 2:
+          if (decision == 1) {
+            curScene = 4;
+            message = "Peeking through the window, you see a witch inside the house.";
+          }
+          else {
+            curScene = 5;
+            message = "Sorry, a witch lives in the house and you just became part of her stew.";
+          }
+          break;
+        case 3:
+          if (decision == 1) {
+            curScene = 6;
+            message = "Sorry, a troll lives on the other side of the bridge and you just became his lunch.";
+          }
+          else {
+            curScene = 7;
+            message = "Your stare is interrupted by the arrival of a huge troll.";
+          }
+          break;
+        case 4:
+          if (decision == 1) {
+            curScene = 8;
+          }
+          else {
+            curScene = 5;
+            message = "Sorry, you became part of the witch's stew.";
+          }
+          break;
+        case 5:
+          curScene = 0;
+          break;
+        case 6:
+          curScene = 0;
+          break;
+        case 7:
+          if (decision == 1) {
+            curScene = 6;
+            message = "Sorry, you became the troll's tasty lunch.";
+          }
+          else {
+            curScene = 9;
+          }
+          break;
+        case 8:
+          // TO BE CONTINUED
+          break;
+        case 9:
+          // TO BE CONTINUED
+          break;
+        }
+
+        document.getElementById("sceneimg").src = "scene" + curScene + ".png";
+        if (message != "")
+        //限制弹出空消息
+          alert(message);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div style="margin-top:100px; text-align:center">
+      <img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /><br />
+      Please choose:
+      <input type="button" id="decision1" value="1" onclick="changeScene(1)" />
+      <input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+    </div>
+  </body>
+</html>
