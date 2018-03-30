@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <title>YouCube - The Blog for Cube Puzzlers</title>
+
+    <script type="text/javascript">
+      // Blog object constructor
+      //构造对象，本例为实例对象，关键字this用于其方法的创建和访问
+      //在实例对象中，其方法（）必须在构造函数内部
+      //实例对象中，其每个属性都匹配相应的方法（一套一套的），方法不共享！
+      function Blog(body, date) {
+        // Assign the properties
+        this.body = body;
+        this.date = date;
+        
+        // Return a string representation of the blog entry
+        //.toString()是显示日期时js自动默认调用
+        //这里相当于重新定义(return)日期显示的方式 
+        this.toString = function() {
+          return "[" + (this.date.getMonth() + 1) + "/" + this.date.getDate() + "/" +
+            this.date.getFullYear() + "] " + this.body;
+        };
+
+        // Return a formatted HTML representation of the blog entry
+        this.toHTML = function(highlight) {
+          // Use a gray background as a highlight, if specified
+          var blogHTML = "";
+          blogHTML += highlight ? "<p style='background-color:#EEEEEE'>" : "<p>";
+          //三元运算符 = if（something）do｛this｝else｛that｝
+          // Generate the formatted blog HTML code
+          //date.getMonth() 0-11 代表一至十二月 所以实际应用中要+1
+          //date.getDate() 1-31 
+          blogHTML += "<strong>" + (this.date.getMonth() + 1) + "/" +     this.date.getDate() + "/" +
+            this.date.getFullYear() + "</strong><br />" + this.body + "</p>";
+
+          return blogHTML;
+        };
+
+        // See if the blog body contains a string of text
+        this.containsText = function(text) {
+          return (this.body.toLowerCase().indexOf(text.toLowerCase()) != -1);
+          //由于indexOf（）大小写敏感，所以要把text都转成大写或小写。 
+          //结果为-1表示没有匹配
+        };
+      }
+
+      // Global array of blog entries
+      var blog = [ new Blog("Got the new cube I ordered. It's a real pearl.", new Date("08/14/2008")),
+                   new Blog("Solved the new cube but of course, now I'm bored and shopping for a new one.", new Date("08/19/2008")),
+                   new Blog("Managed to get a headache toiling over the new cube. Gotta nap.", new Date("08/16/2008")),
+                   new Blog("Found a 7x7x7 cube for sale online. Yikes! That one could be a beast.", new Date("08/21/2008")),
+                   new Blog("Met up with some fellow cubers to discuss the prospect of a 7x7x7 cube. Mixed feelings.", new Date("08/29/2008")) ];
+
+      // Show the list of blog entries
+      function showBlog(numEntries) {
+        // First sort the blog in reverse chronological order (most recent first)
+        blog.sort(function(blog1, blog2) { return blog2.date - blog1.date; });
+        //sort() 方法用于对数组的元素进行排序,并返回数组。默认排序顺序是根据字符串Unicode码点。
+        //语法：arrayObject.sort(sortby)；参数sortby可选。规定排序顺序。必须是函数。
+        //.sort(a,b) a-b升序 b-a降序
+
+        // Adjust the number of entries to show the full blog, if necessary
+        if (!numEntries)
+          numEntries = blog.length;
+        //没有指定显示多少行时，显示整个bolg数组
+        // Show the blog entries
+        var i = 0, blogListHTML = "";
+        while (i < blog.length && i < numEntries) {
+          blogListHTML += blog[i].toHTML(i % 2 == 0);
+          i++;
+        }
+
+        // Set the blog HTML code on the page
+        document.getElementById("blog").innerHTML = blogListHTML;
+      }
+
+      // Search the list of blog entries for a piece of text
+      function searchBlog() {
+        var searchText = document.getElementById("searchtext").value;
+        for (var i = 0; i < blog.length; i++) {
+          // See if the blog entry contains the search text
+          if (blog[i].containsText(searchText)) {
+            alert(blog[i]);
+            break;
+          }
+        }
+
+        // If the search text wasn't found, display a message
+        if (i == blog.length)
+        // i==blog.length 搜到最后
+          alert("Sorry, there are no blog entries containing the search text.");
+      }
+
+      // Display a randomly chosen blog entry
+      function randomBlog() {
+        // Pick a random number between 0 and blog.length - 1
+        var i = Math.floor(Math.random() * blog.length);
+        alert(blog[i]);
+      }
+    </script>
+  </head>
+
+  <body onload="showBlog(5);">
+    <h3>YouCube - The Blog for Cube Puzzlers</h3>
+    <img src="cube.png" alt="YouCube" />
+    <input type="button" id="search" value="Search the Blog" onclick="searchBlog();" />
+    <input type="text" id="searchtext" name="searchtext" value="" />
+    <div id="blog"></div>
+    <input type="button" id="showall" value="Show All Blog Entries" onclick="showBlog();" />
+    <input type="button" id="viewrandom" value="View a Random Blog Entry" onclick="randomBlog();" />
+  </body>
+</html>
